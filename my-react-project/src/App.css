@@ -1,38 +1,79 @@
-.App {
-  text-align: center;
+
+.App{
+  margin-top : 20px;
+  margin-left: 20px;
+  margin-right: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.Exploration{
+  width: 100px;
+  
+}
+.Menu{
+  left: 10px;
+  
+}
+.Inputs{
+  margin: 20px;
+  margin-right:20px ;
+  width: 100%;
+  height: 100px;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 4px;
+  background-color: #f8f8f8;
+  
+}
+.location{
+
+  height: 120px;
+  resize: none;
+}
+.DateIn{
+
+  height: 120px;
+  resize: none;
+}
+.DateOut{
+
+  height: 120px;
+  resize: none;
+}
+.PartySize{
+
+  height: 120px;
+  resize: none;
+}
+.searchButton{
+  text-align: right;
+
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.logoImage{
+  height: 100px;
+  width: 100px; 
+
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.menu{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.login{
+  margin: 10px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.account{
+margin: 10px;
+}
+
+.home{
+  margin: 10px;
+}
+.createAccount{
+text-align: center;
+font-style: italic;
+font-size: 30px;
 }
