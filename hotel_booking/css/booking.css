@@ -1,0 +1,33 @@
+
+.well {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    height: 200px;
+}
+
+body {
+    background: rgb(25,39,52);
+}
+
+h4 {
+    color: #ffbb2b;
+}
+h6
+{
+    color: navajowhite;
+    font-family:  monospace;
+}
+label
+{
+    color:#ffbb2b;
+    font-size: 13px;
+    font-weight: 100;
+}
+.container{
+    padding: 10px;
+}
+.image{
+    padding: 10px;
+    right: 50px;
+}
+

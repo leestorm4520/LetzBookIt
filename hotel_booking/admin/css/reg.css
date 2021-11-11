@@ -1,0 +1,37 @@
+body {
+    background: rgb(25,39,52);
+}
+
+h2 {
+    text-align: center;
+    color: #ffbb2b;
+}
+
+#click_here {
+    margin-top: 10px;
+    text-align: center;
+    
+}
+.container{
+    padding: 10px;
+}
+.image{
+    padding: 10px;
+    right: 50px;
+}
+
+label
+{
+    color:#ffbb2b;
+    font-size: 13px;
+    font-weight: 100;
+}
+
+.button
+{
+    
+    width: 100px;
+    float: right;
+    font-size: 13px;
+    
+}

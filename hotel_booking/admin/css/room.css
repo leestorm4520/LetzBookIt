@@ -1,0 +1,27 @@
+.well {
+    background: rgba(0, 0, 0, 0.7);
+    border: none;
+    height: 200px;
+}
+
+body {
+    background: rgb(25,39,52);
+
+}
+
+h4 {
+    color: yellow;
+}
+h6
+{
+    color: white;
+   
+}
+
+.container{
+    padding: 10px;
+}
+.image{
+    padding: 10px;
+    right: 50px;
+}
