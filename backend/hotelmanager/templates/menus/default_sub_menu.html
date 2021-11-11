@@ -1,0 +1,12 @@
+{% load menu_tags %}
+
+<ul>
+  {% for menu_item in menu_items %}
+    {% if menu_item.has_children_in_menu %}
+      <li class="dropdown"><a href="{{ menu_item.href }}"><span>{{ menu_item.text }}</span> <i class="bi bi-chevron-right"></i></a>
+      {% sub_menu menu_item %}
+    {% else %}
+      <li><a href="{{ menu_item.href }}">{{ menu_item.text }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>

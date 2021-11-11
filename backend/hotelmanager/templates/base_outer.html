@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags %}
+
+{% block header %}
+
+
+{% block content_wrapper %}
+
+{% block content %}
+  {% for block in page.body %}
+      {% include_block block %}
+  {% endfor %}
+{% endblock content %}
+
+{% endblock content_wrapper %}
+
+{% endblock %}

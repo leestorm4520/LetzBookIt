@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content_wrapper %}
+
+<!-- ======= Breadcrumbs ======= -->
+<section id="breadcrumbs" class="breadcrumbs">
+  <div class="container">
+
+    <ol>
+      <li><a href="{{ page.get_parent.url }}">Home</a></li>
+      <li>{{ page.title }}</li>
+    </ol>
+    <h2>{{ page.title }}</h2>
+    <p>{{ page.date }}</p>
+    {% block extra_breadcrumbs %}{% endblock extra_breadcrumbs %}
+
+  </div>
+
+</section><!-- End Breadcrumbs -->
+<section class="inner-page">
+  <div class="container">
+    <p>
+      {% block content %}{% endblock content %}
+    </p>
+  </div>
+</section>
+{% endblock content_wrapper %}
