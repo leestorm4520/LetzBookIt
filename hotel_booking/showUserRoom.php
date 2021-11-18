@@ -82,7 +82,7 @@ $user=new User();
         
         <?php
         
-        $sql="SELECT * FROM rooms WHERE book='true'";
+        $sql="SELECT * FROM room_Magnolia WHERE book='true'";
         
         $result = mysqli_query($user->db, $sql);
         if($result)

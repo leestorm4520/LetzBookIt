@@ -2,10 +2,13 @@
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
     $room_size=$_GET['room_size'];
+    $sql="SELECT * FROM UserName";
+    $U_id =uniqid();
+
     if(isset($_REQUEST[ 'submit'])) 
     { 
         extract($_REQUEST); 
-        $result=$user->book_Magnolia($checkin, $checkout, $name, $phone,$room_size);
+        $result=$user->book_Magnolia($checkin, $checkout, $name, $phone,$room_size,$U_id);
         if($result)
         {
             echo "<script type='text/javascript'>
@@ -91,10 +94,12 @@ $( ".datepicker" ).datepicker({
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="../hotels.php">Hotels</a></li>
+                <li><a href="../index.php">Home</a></li>
+                    <li class="active"><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../Manager.php">login/Registration</a></li>
+                    <li><a href="../Manager.php">Manager login</a></li>
+                    <li><a href="../admin/UserLogin.php">User Login</a></li>
+                    <li><a href="../userRegister.php">User Registration</a></li>
                 </ul>
             </div>
         </nav>
@@ -117,11 +122,11 @@ $( ".datepicker" ).datepicker({
                 </div>
                 <div class="form-group">
                    
-                    <input placeholder ="Enter FULL NAME" type="text" class="form-control" name="name" required>
+                    <input placeholder ="Enter First Last Name(eg. John Smith)" type="text" class="form-control" name="name" pattern ="^[A-Za-z]+\s[A-Za-z]+$" required>
                 </div>
                 <div class="form-group">
                   
-                    <input  placeholder ="Enter Phone Number"type="integer" class="form-control" name="phone" required>
+                    <input  placeholder ="Enter Phone Number (eg. 555-555-5555)"type="text" class="form-control" name="phone" pattern = "^\d{3}-\d{3}-\d{4}$" required>
                 </div>
                  
                

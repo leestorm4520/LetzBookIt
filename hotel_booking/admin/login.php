@@ -17,7 +17,7 @@ include_once 'include/class.user.php'; $user=new User(); ?>
             if (form.emailusername.value == "") {
                 alert("Enter email or username.");
                 return false;
-            } else if (form.password.value == ) {
+            } else if (form.password.value =="" ) {
                 alert("Enter Password.");
                 return false;
             }
@@ -74,9 +74,9 @@ p
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
-                    <li><a href="../room.php">Room</a></li>
+                    <li><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li class="active"><a href="../User.php">login/Registration</a></li>
+                    <li class="active"><a href="../User.php">Manager login</a></li>
                     <li><a href="UserLogin.php">User Login</a></li>
                     <li><a href="../userRegister.php">User Registration</a></li>
               
@@ -89,12 +89,10 @@ p
             <hr>
             <form action="" method="post" name="login">
                 <div class="form-group">
-                    <label for="emailusername">Username or Email:</label>
-                    <input type="text" name="emailusername" value="tuan" required>
+                    <input type="text" placeholder="Enter Username or Email" name="emailusername"  required>
                 </div>
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" name="password" value="1234" required>
+                    <input type="password" placeholder="Enter Password" name="password" required>
                 </div>
                
                 <p id="wrong_id" style=" color:red; font-size:12px; "></p>

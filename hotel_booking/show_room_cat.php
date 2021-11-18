@@ -102,8 +102,7 @@ $user=new User();
                             <div class='col-md-6 well'>
                                 <h4>".$row['hotels']."</h4><hr>
                                 <h6>Room capacity: ".$row['room_num']." </h6>
-                                <h6>Aminities: ".$row['hotelAmenities']."</h6>
-                                <h6>".$row['room_price']."</h6>
+                                <h6>Amenities: ".$row['hotelAmenities']."</h6>
                             </div>
                          
                            

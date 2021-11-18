@@ -105,7 +105,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     }
                     else                       
@@ -121,7 +121,7 @@
             }
 
 
-            public function book_Magnolia($checkin, $checkout, $name, $phone,$room_size)
+            public function book_Magnolia($checkin, $checkout, $name, $phone,$room_size,$U_id)
             {
                     
                     $sql="SELECT * FROM room_Magnolia WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
@@ -133,7 +133,7 @@
                         $row = mysqli_fetch_array($check);
                         $id=$row['hotel_id'];
                         
-                        $sql2="UPDATE room_Magnolia  SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                        $sql2="UPDATE room_Magnolia  SET checkin='$checkin', checkout='$checkout',U_id='$U_id', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
                          $send=mysqli_query($this->db,$sql2);
                         if($send)
                         {
@@ -141,7 +141,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     }
                     else                       
@@ -172,7 +172,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     }
                     else                       
@@ -203,7 +203,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     }
                     else                       
@@ -213,6 +213,231 @@
               
                     return $result;
             }
+
+
+            public function book_Rio($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_RioInn WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_RioInn WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_RioInn  SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+
+            public function book_sunPalace($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_sunPalace WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_sunPalace WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_sunPalace SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+
+            public function book_HomeAway($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_homeAwayInn WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_homeAwayInn WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_homeAwayInn SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+            public function book_comfy($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_ComfyMotel WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_ComfyMotel WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_ComfyMotel SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+
+            public function book_courtYard($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_Courtyard WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_Courtyard WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_Courtyard SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+
+            public function book_regency($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_Regency WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_Regency WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_Regency SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
+
+
+            public function book_townInn($checkin, $checkout, $name, $phone,$room_size)
+            {
+                    
+                    $sql="SELECT * FROM room_TownInnBudget WHERE room_size='$room_size' AND (hotel_id NOT IN (SELECT DISTINCT hotel_id
+                          FROM room_TownInnBudget WHERE checkin <= '$checkin' AND checkout >='$checkout'))";
+                    $check= mysqli_query($this->db,$sql)  or die(mysqli_connect_errno()."Data here cannot inserted");;
+                 
+                    if(mysqli_num_rows($check) > 0)
+                    {
+                        $row = mysqli_fetch_array($check);
+                        $id=$row['hotel_id'];
+                        
+                        $sql2="UPDATE room_TownInnBudget SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE hotel_id=$id";
+                         $send=mysqli_query($this->db,$sql2);
+                        if($send)
+                        {
+                            $result="Your Room has been booked!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error";
+                        }
+                    }
+                    else                       
+                    {
+                        $result = "No Room Is Available";
+                    }
+              
+                    return $result;
+            }
+
 
 
              public function edit_all_room($checkin, $checkout, $name, $phone,$id)
@@ -226,7 +451,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
                     
                 
@@ -261,7 +486,7 @@
                         }
                         else
                         {
-                            $result="Sorry, Internel Error";
+                            $result="Sorry, Internal Error";
                         }
   
                     
@@ -271,6 +496,214 @@
 
             }
           
+
+
+            public function cancelRoomMagnolia($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {
+
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_Magnolia  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            public function cancelRoomParkNorth($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_parkNorthRoom  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            public function cancelTownCentre($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_townCentreRoom  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+
+            public function cancelHomeAway($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_homeAwayInn  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+
+            public function cancelRio($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_RioInn  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            
+            public function cancelSunPalace($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_sunPalace  SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+
+            public function cancelComfy($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_ComfyMotel SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internal Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            public function cancelCourtYard($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_Courtyard SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internel Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            public function cancelRegency($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_Regency SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internel Error my error";
+                        }
+
+                    return $result;
+                
+            }
+            public function cancelTownInn($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book)
+            {                           
+                        $book = 'false';
+                        $checkin = '0000-00-00';
+                        $checkout = '0000-00-00';
+                 
+                        $sql="UPDATE room_TownInnBudget SET checkin='$checkin', checkout='$checkout', name='', phone='$phone', book='$book' WHERE name='$name'";
+                         $send=mysqli_query($this->db,$sql);
+                        if($send)
+                        {
+                            $result="Updated Successfully!!";
+                        }
+                        else
+                        {
+                            $result="Sorry, Internel Error my error";
+                        }
+
+                    return $result;
+                
+            }
+
             public function check_login($emailusername,$password)
             {
                 $sql2="SELECT M_id from manager WHERE M_email='$emailusername' OR M_name='$emailusername' and M_password='$password'";
@@ -318,6 +751,8 @@
                 $_SESSION['login']=false;
                 session_destroy();
             }
+
+            
         }
 
 ?>

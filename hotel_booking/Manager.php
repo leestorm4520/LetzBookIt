@@ -26,7 +26,6 @@ if(isset($_GET['q']))
 
     <!-- Bootstrap -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 
     <style>
@@ -80,14 +79,17 @@ if(isset($_GET['q']))
                     <li><a href="index.php">Home</a></li>
                     <li><a href="hotels.php">Hotels</a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li class="active"><a href="Manager.php">login/Registration</a></li>
+                    <li class="active"><a href="Manager.php">Manager login</a></li>
+                    <li><a href="admin/UserLogin.php">User Login</a></li>
                     <li><a href="userRegister.php">User Registration</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li>
+
                         <a href="Manager.php?q=logout">
                             <button type="button">Logout</button>
                         </a>
+
                     </li>
                 </ul>
             </div>
@@ -95,24 +97,25 @@ if(isset($_GET['q']))
         <div class = "wellfix">
              <div class = "control" style="text-align: center; padding = 40px; margin: 30px;">
            
-                 <h1 style="color:white">Maneger Control Room</h4>
+                 <h1 style="color:white">Manager Control Room</h4>
                  <hr>
                   <div style="text-align: center; padding = 40px; margin: 30px;">
                 <ul>
-                    <a href="show_room_cat.php">Show All Room</a>
+                    <a href="show_room_cat.php">Room Availability</a>
                 </ul>
                 <ul>
-                    <a href="userProfile.php">Show all User Profiles</a>
+                    <a href="userProfile.php">Customer Information</a>
                 </ul>
                 <ul>
-                    <a href="hotels.php">Book Hotels</a>
+                    <a href="hotels.php">Booking</a>
                  </ul>
                 <ul>
-                    <a href="show_all_room.php">Show All Booked Rooms</a>
+                    <a href="show_all_room.php">Reservation Info and Cancellation</a>
                 </ul>
                 <ul>
                     <a href="admin/registration.php">Add Another Manager</a>
                 </ul>
+                
             </div>
             
         </div>
