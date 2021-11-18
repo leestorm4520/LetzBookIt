@@ -8,20 +8,20 @@ if(isset($_REQUEST[ 'submit']))
     if($register) 
     { 
         echo "
-<script type='text/javascript'>
-    alert('Your Manager has been Added Successfully');
-</script>"; 
+                <script type='text/javascript'>
+                    alert('Your Manager has been Added Successfully');
+                </script>"; 
         echo "
-<script type='text/javascript'>
-    window.location.href = '../Manager.php';
-</script>"; 
+                <script type='text/javascript'>
+                    window.location.href = '../Manager.php';
+                </script>"; 
     } 
     else 
     {
         echo "
-<script type='text/javascript'>
-    alert('Registration failed! username or email already exists');
-</script>";
+                <script type='text/javascript'>
+                    alert('Registration failed! username or email already exists');
+                </script>";
     }
 } 
 ?>
@@ -97,19 +97,27 @@ if(isset($_REQUEST[ 'submit']))
       <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
-    <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li class = "active"><a href="../Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="../userRegister.php">User Registration</a></li>
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="../index.php">Home</a></li>
+                   <li><a href="../hotels.php">Hotels</a></li>
+                   <li><a href="../contact.php">Contact</a></li>
+                   <li class="active"><a href="registration.php">Login</a></li>
+                   <li><a href="../userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../Manager.php?q=logout">
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
+                        </a>
+                    </li>
                 </ul>
-            </div>
-        </nav>
-        <hr>
+               </ul>
+           </div>
+       </nav>
+       <hr>
 
         <div class="well">
             <h2>Add Your Manager</h2>

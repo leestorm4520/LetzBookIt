@@ -509,7 +509,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -529,7 +529,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -549,7 +549,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -570,7 +570,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -591,7 +591,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -612,7 +612,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -633,7 +633,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -653,7 +653,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -673,7 +673,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {
@@ -693,7 +693,7 @@
                          $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
-                            $result="Updated Successfully!!";
+                            $result="The Booking has been cancelled Successfully!!";
                         }
                         else
                         {

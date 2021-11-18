@@ -103,9 +103,15 @@ p
                 <br>
                 <p style="font-size: 14px;"><a href="../index.php">Back To Home</a></p>
                 
-                <?php if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); $login=$user->checkUserlogin($emailusername, $password); 
-                    if($login) { echo "<script>location='../User.php'</script>"; } 
-                else{?>
+                <?php 
+                if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); 
+                    $login=$user->checkUserlogin($emailusername, $password); 
+                    if($login) { 
+                        echo 
+                            "<script>location='../User.php'</script>"; 
+                    } 
+                else{
+                    ?>
 
                 <script type="text/javascript">
                     document.getElementById("wrong_id").innerHTML = "Wrong username or password";

@@ -73,27 +73,27 @@ if(isset($_GET['q']))
     </div>
 
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-flM_id">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li class="active"><a href="Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="userRegister.php">User Registration</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="index.php">Home</a></li>
+                   <li><a href="hotels.php">Hotels</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li class="active"><a href="Manager.php">Login</a></li>
+                   <li><a href="userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
                     <li>
-
                         <a href="Manager.php?q=logout">
-                            <button type="button">Logout</button>
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
                         </a>
-
                     </li>
                 </ul>
-            </div>
-        </nav>
+               </ul>
+           </div>
+       </nav>
+       <hr>
         <div class = "wellfix">
              <div class = "control" style="text-align: center; padding = 40px; margin: 30px;">
            

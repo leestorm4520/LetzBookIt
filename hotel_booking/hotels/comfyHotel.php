@@ -89,14 +89,14 @@ $( ".datepicker" ).datepicker({
     <div class="container">
        
         <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
+        <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active"><a href="../hotels.php">Hotels</a></li>
+                    <li class= "active"><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../Manager.php">Manager login</a></li>
-                    <li><a href="../admin/UserLogin.php">User Login</a></li>
-                    <li><a href="../userRegister.php">User Registration</a></li>
+                    <li><a href="../User.php">Login</a></li>
+                    <li><a href="../userRegister.php">Customer Registration</a></li>
+              
                 </ul>
             </div>
         </nav>

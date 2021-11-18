@@ -23,7 +23,7 @@ $user=new User();
         .well {
             background: rgba(0, 0, 0, 0.7);
             border: none;
-            height: 200px;
+            height: 300px;
         }
         
         body {
@@ -61,23 +61,30 @@ $user=new User();
       <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
             
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact Us</a></li>
-                    <li><a href="Manager.php">login/Registration</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+  
+    <div class="container">
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="index.php">Home</a></li>
+                   <li><a href="hotels.php">Hotels</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li class="active"><a href="User.php">Login</a></li>
+                   <li><a href="userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="admin.php?q=logout">
-                            <button type="button" class="btn btn-danger">Logout</button>
+                        <a href="Manager.php?q=logout">
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
                         </a>
                     </li>
                 </ul>
-            </div>
-        </nav>
+               </ul>
+           </div>
+       </nav>
+       <hr>
+     
         
         
         
@@ -102,6 +109,9 @@ $user=new User();
                             <div class='col-md-6 well'>
                                 <h4>".$row['hotels']."</h4><hr>
                                 <h6>Room capacity: ".$row['room_num']." </h6>
+                                <h6>Standard bed Price/night: ".$row['standard_price']." </h6>
+                                <h6>Queen bed Price/night: ".$row['queen_price']." </h6>
+                                <h6>King bed Price/night: ".$row['king_price']." </h6>
                                 <h6>Amenities: ".$row['hotelAmenities']."</h6>
                             </div>
                          

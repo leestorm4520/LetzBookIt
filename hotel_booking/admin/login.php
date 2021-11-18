@@ -76,16 +76,15 @@ p
                     <li><a href="../index.php">Home</a></li>
                     <li><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li class="active"><a href="../User.php">Manager login</a></li>
-                    <li><a href="UserLogin.php">User Login</a></li>
-                    <li><a href="../userRegister.php">User Registration</a></li>
+                    <li class="active"><a href="../User.php">Login</a></li>
+                    <li><a href="../userRegister.php">Customer Registration</a></li>
               
                 </ul>
             </div>
         </nav>
         <hr>
         <div class="jumbotron">
-            <h2>Manager Login</h2>
+            <h2>Login</h2>
             <hr>
             <form action="" method="post" name="login">
                 <div class="form-group">
@@ -104,8 +103,30 @@ p
                 <p style="font-size: 14px;"><a href="../index.php">Back To Home</a></p>
                 
                 <?php if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); $login=$user->check_login($emailusername, $password); 
-                    if($login) { echo "<script>location='../Manager.php'</script>"; } 
+                    if($login) { echo "<script type='text/javascript'>
+                        alert('You have logged in as Manager Successfully!!');
+                    </script>
+                        <script>location='../Manager.php'</script>"; } 
                 else{?>
+
+                <script type="text/javascript">
+                    document.getElementById("wrong_id").innerHTML = "Wrong username or password";
+                </script>
+
+                <?php } }?>
+                <?php 
+                if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); 
+                    $login=$user->checkUserlogin($emailusername, $password); 
+                    if($login) { 
+                        echo 
+                            " <script type='text/javascript'>
+                                alert('You have logged in as Customer Successfully!!');
+                            </script>
+                            <script>location='../User.php'</script>";
+                             
+                    } 
+                else{
+                    ?>
 
                 <script type="text/javascript">
                     document.getElementById("wrong_id").innerHTML = "Wrong username or password";

@@ -25,9 +25,8 @@
                     <li class="active"><a href="index.php">Home</a></li>
                     <li><a href="hotels.php">Hotels</a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="userRegister.php">User Registration</a></li>
+                    <li><a href="Manager.php">Login</a></li>
+                    <li><a href="userRegister.php">Customer Registration</a></li>
                 </ul>
             </div>
         </nav>

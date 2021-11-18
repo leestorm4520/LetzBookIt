@@ -26,20 +26,28 @@ $user=new User();
       <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
-        
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li class = "active"><a href="Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="userRegister.php">User Registration</a></li>
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="index.php">Home</a></li>
+                   <li><a href="hotels.php">Hotels</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li class="active"><a href="userProfile.php">Login</a></li>
+                   <li><a href="userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="Manager.php?q=logout">
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
+                        </a>
+                    </li>
                 </ul>
-            </div>
-        </nav>
-        <hr>
+               </ul>
+           </div>
+       </nav>
+       <hr>
+    
         
         <?php
         
@@ -57,8 +65,8 @@ $user=new User();
                     echo "
                             <div class='col-md-4 wellfix'>
                           
-                                <h4>".$row['U_id']."</h4>
-                                <h6>Full Name: ".$row['U_fullname']." </h6>
+                                <h4>Full Name: ".$row['U_fullname']."</h4>
+                                <h6>Username: ".$row['U_name']." </h6>
                                 <h6>Email: ".$row['U_email']."</h6>
                                 <h6>Password: ".$row['U_password']." </h6>
                                 <hr>
