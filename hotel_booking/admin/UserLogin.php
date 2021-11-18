@@ -18,7 +18,7 @@ $user=new User(); ?>
             if (form.emailusername.value == "") {
                 alert("Enter email or username.");
                 return false;
-            } else if (form.password.value =="" ) {
+            } else if (form.password.value == ) {
                 alert("Enter Password.");
                 return false;
             }
@@ -78,7 +78,7 @@ p
                     <li><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
                     <li><a href="../Manager.php">Manager login</a></li>
-                    <li class="active"><a href="../admin/UserLogin.php">User login</a></li>
+                    <li class="active"><a href="admin/UserLogin.php">User login</a></li>
                     <li><a href="../userRegister.php">User Registration</a></li>
                 </ul>
             </div>
@@ -89,10 +89,12 @@ p
             <hr>
             <form action="" method="post" name="login">
                 <div class="form-group">
-                    <input type="text" placeholder="Enter Username or Email" name="emailusername"  required>
+                    <label for="emailusername">Username or Email:</label>
+                    <input type="text" name="emailusername" value="tuan" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" placeholder="Enter Password" name="password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" value="4321" required>
                 </div>
                 
                 <p id="wrong_id" style=" color:red; font-size:12px; "></p>
@@ -103,15 +105,9 @@ p
                 <br>
                 <p style="font-size: 14px;"><a href="../index.php">Back To Home</a></p>
                 
-                <?php 
-                if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); 
-                    $login=$user->checkUserlogin($emailusername, $password); 
-                    if($login) { 
-                        echo 
-                            "<script>location='../User.php'</script>"; 
-                    } 
-                else{
-                    ?>
+                <?php if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); $login=$user->checkUserlogin($emailusername, $password); 
+                    if($login) { echo "<script>location='../User.php'</script>"; } 
+                else{?>
 
                 <script type="text/javascript">
                     document.getElementById("wrong_id").innerHTML = "Wrong username or password";

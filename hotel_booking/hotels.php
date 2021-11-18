@@ -33,8 +33,9 @@ $user=new User();
                     <li><a href="index.php">Home</a></li>
                     <li class="active"><a href="hotels.php"> Hotels </a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Login</a></li>
-                    <li><a href="userRegister.php">Customer Registration</a></li>
+                    <li><a href="Manager.php">Manager login</a></li>
+                    <li><a href="admin/UserLogin.php">User Login</a></li>
+                    <li><a href="userRegister.php">User Registration</a></li>
                 </ul>
             </div>
         </nav>
@@ -43,7 +44,7 @@ $user=new User();
         <?php
         
         
-        $sql="SELECT * FROM hotelList";
+        $sql="SELECT * FROM hotel";
         $result = mysqli_query($user->db, $sql);
         if($result)
         {
@@ -52,11 +53,9 @@ $user=new User();
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {
-                    $sq2="SELECT * FROM room_Magnolia";
+                   /* $sq2="SELECT * FROM room_Magnolia";
                     $result1 = mysqli_query($user->db, $sq2);
                     $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
                     if($result1)
                     {
                         if(mysqli_num_rows($result1) > 0)
@@ -64,443 +63,44 @@ $user=new User();
             
                             while($row1 = mysqli_fetch_array($result1))
                             {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 1 )
+                                if ($row1['book' == 'true'])
                                 {
-                               
-                                $room = $room + 1;                                      
+                                $magnolia = $row['room_num'] - 1;
+
+                                //echo "<h4>".$magnolia." </h4>";
+                                       
                                 }
                                 
-                              
-                         
                             }
-                            if ($row['hotel_id'] == 1){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <h4></h4>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
+                            echo "
+                            <div class='col-md-4 wellfix'>
+                          
+                                <h4>".$row['hotels']."</h4>
+                                <h6>Room Available: ".$magnolia."</h6>
+                                <h6>Aminities: ".$row['hotelAmenities']."</h6>
+                                <h6>".$row['room_price']."</h6>
+                                <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
+                                <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
+                                <h1></h1>                           
+                            </div>
+                         ";    
                         }
-                       
-                    }
-                   
-                    $sq2="SELECT * FROM room_townCentreRoom";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 2 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 2){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
+                    }*/
 
-                        
-                        }
-                       
-                    }
+                    $weekDiff = (($row['weekend_diff'] - 1) * 100);
+                   echo "
+                            <div class='col-md-4 wellfix'>
+                          
+                                <h4>".$row['name']."</h4>
+                                <h6>Location: ".$row['address']."</h6>
+                                <h6>Aminities: ".$row['amenities']."</h6>
+                                <h6>Phone Number: ".$row['phone_num']."</h6>
+                                <h6>Weekend Differential: ".$weekDiff." % nightly rate surcharge.</h6>
+                                <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
+                                <h1></h1>                           
+                            </div>
 
-
-                    $sq2="SELECT * FROM room_parkNorthRoom";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 3 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 3){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-
-                    $sq2="SELECT * FROM room_Courtyard";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 4 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 4){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-                    $sq2="SELECT * FROM room_Regency";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 5 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 5){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-
-                    $sq2="SELECT * FROM room_TownInnBudget";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 6 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 6){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-                    $sq2="SELECT * FROM room_ComfyMotel";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 7 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 7){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: N/A </h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-                    $sq2="SELECT * FROM room_sunPalace";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 8 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 8){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-
-                    $sq2="SELECT * FROM room_homeAwayInn";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 9 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 9){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: N/A</h6>
-                                    <h6>King Size: N/A</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-
-                    $sq2="SELECT * FROM room_RioInn";
-                    $result1 = mysqli_query($user->db, $sq2);
-                    $magnolia = 0;
-                    $reMag =0;
-                    $room=0;
-                    if($result1)
-                    {
-                        if(mysqli_num_rows($result1) > 0)
-                        {
-            
-                            while($row1 = mysqli_fetch_array($result1))
-                            {
-                                if ($row1['book'] == 'true' && $row['hotel_id'] == 10 )
-                                {
-                               
-                                $room = $room + 1;                                      
-                                }
-                                
-                              
-                         
-                            }
-                            if ($row['hotel_id'] == 10){
-                                echo "
-                                <div class='col-md-4 wellfix'>
-                                    
-                                    <h4>".$row['hotels']."</h4>
-                                    <h6>Room Available: ".$row['room_num'] - $room."</h6>
-                                    <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                                    <h6>Standard Size: ".$row['standard_price']." $/night</h6>
-                                    <h6>Queen Size: ".$row['queen_price']." $/night</h6>
-                                    <h6>King Size: ".$row['king_price']." $/night</h6>
-                                    <h6>Weekend Differential: ".$row['Surcharge']." % nightly rate surcharge.</h6>
-                                    <a href='hotelsRoom/".$row['pickRoomWeb'].".php'><button>Book Now</button> </a>
-                                    <h1></h1>                           
-                                </div>
-                             ";
-                            }
-                             
-
-                        
-                        }
-                       
-                    }
-
-                    
-                                                       
+                         "; //echo end                                     
                 }                                      
             }
             else

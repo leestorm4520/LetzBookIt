@@ -81,9 +81,9 @@ $( ".datepicker" ).datepicker({
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
-                    <li class="active"><a href="../hotels.php">Hotels</a></li>
+                    <li class="active"><a href="hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../Manager.php">Manager login</a></li>
+                    <li><a href="../Manager.php">Login/Registration</a></li>
                     <li><a href="../admin/UserLogin.php">User Login</a></li>
                     <li><a href="../userRegister.php">User Registration</a></li>
                 </ul>
@@ -94,42 +94,30 @@ $( ".datepicker" ).datepicker({
         <?php
         
         
-        $sql="SELECT * FROM Hotel_Rooms
-              INNER JOIN Hotel ON Hotel.hotelID = Hotel_Rooms.hotelID 
-              WHERE Hotel.name = 'Sun Palace Inn' ";
-              //This query will get all hotel room types associated with the Sun Palace Inn
+        $sql="SELECT * FROM hotelList";
         $result = mysqli_query($user->db, $sql);
         if($result)
         {
             if(mysqli_num_rows($result) > 0)
             {
-                echo "
-                        <div>
-                               <h2 style='color:white'> Welcome to Sun Palace Inn</h2>   
-                            </div>
-                                <div class='form-group'>
-                                    <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;";
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
-                {     
-                    //echo "
-                      //  <div>
-                        //       <h2 style='color:white'> Welcome to Town Inn Budget Rooms</h2>   
-                          //  </div>
-                            //<div class='form-group'>
-                            //    <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;
-                            echo" <a href='../hotels/townInn.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
-                            // <a href='../hotels/townInn.php?room_size=".$row['room2']."'><button>STANDARD SIZE</button> </a>
-                           //  <a href='../hotels/townInn.php?room_size=".$row['room3']."'><button>KING SIZE</button> </a>
-                          //  </div>
-                       // </div>
-                       //  "; //echo end                                      
-                
-                
-                
-                }     
-                echo "</div>
-                    </div>";                                 
+                {
+                    if ($row['hotels'] == 'Park North Hotel' )
+                      
+                    echo "
+                        <div>
+                               <h2 style='color:white'> Welcome to Park North Hotel </h2>   
+                            </div>
+                            <div class='form-group'>
+                                <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;
+                             <a href='ParkNorth.php?room_size=".$row['room1']."'><button>QUEEN SIZE</button> </a>
+                             <a href='ParkNorth.php?room_size=".$row['room2']."'><button>STANDARD SIZE</button> </a>
+                             <a href='ParkNorth.php?room_size=".$row['room3']."'><button>KING SIZE</button> </a>
+                            </div>
+                        </div>
+                         "; //echo end                                         
+                }                                      
             }
             else
             {

@@ -42,12 +42,12 @@ CREATE TABLE `room_Magnolia` (
 
 INSERT INTO `room_Magnolia` (`hotel_id`, `room_size`, `checkin`, `checkout`,`U_id`, `name`,`phone`,`price`, `book`) VALUES
 (111, 'QUEEN SIZE', '0000-00-00', '0000-00-00',0, '', 0,150,'false'),
-(112, 'QUEEN SIZE', '2021-05-19', '2021-05-22',0, 'lee Nguyen', '124-243-6421',150, 'true'),
-(113, 'QUEEN SIZE', '2021-05-19', '2021-05-22',0, 'John Nguyen', '124-342-6421',150, 'true'),
+(112, 'QUEEN SIZE', '0000-00-00', '0000-00-00',0, '', 0,150,'false'),
+(113, 'QUEEN SIZE', '2021-05-19', '2021-05-22',0, 'John Nguyen', '124-342-6421',250, 'true'),
 (114, 'KING SIZE', '2021-05-19', '2021-05-22',0, 'tuan Nguyen', '124-432-6421',250, 'true'),
 (115, 'KING SIZE', '0000-00-00', '0000-00-00',0, '', 0,250, 'false'),
 (116, 'KING SIZE', '0000-00-00', '0000-00-00',0, '', 0,250, 'false'),
-(117, 'STANDARD SIZE', '2021-05-19', '2021-05-22',0, 'amie Nguyen', '124-432-4231',100, 'true'),
+(117, 'STANDARD SIZE', '0000-00-00', '0000-00-00',0, '', 0,100, 'false'),
 (118, 'STANDARD SIZE', '0000-00-00', '0000-00-00',0, '', 0,100, 'false'),
 (119, 'STANDARD SIZE', '0000-00-00', '0000-00-00',0, '', 0,100, 'false');
 
@@ -295,25 +295,23 @@ CREATE TABLE `hotelList` (
   `room3` text NOT NULL,
   `websiteDirect` text NOT NULL,
   `hotelAmenities` text NOT NULL,
-  `standard_price` int(11) NOT NULL,
-  `queen_price` int(11) NOT NULL,
-  `king_price` int(11) NOT NULL,
   `room_num` int(11) NOT NULL,
+  `room_price` text NOT NULL,
   `Surcharge` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `hotelList` (`hotel_id`,`hotels`,`pickRoomWeb`,`room1`,`room2`,`room3`,`websiteDirect`, `hotelAmenities`,`standard_price`,`queen_price`,`king_price`, `room_num`, `surcharge`) VALUES
+INSERT INTO `hotelList` (`hotel_id`,`hotels`,`pickRoomWeb`,`room1`,`room2`,`room3`,`websiteDirect`, `hotelAmenities`,`room_price`, `room_num`, `surcharge`) VALUES
 
-(1,'The Magnolia All Suites','MagnoliaRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheMagnoliaAllSuites','Pool, Gym, Spa, Business Office',100,150,250,20,25),
-(2,'The Lofts at Town Centre','townCentreRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheLoftsatTownCentre','Pool, Gym, Business Office',105 , 120 , 190 ,60, 35),
-(3,'Park North Hotel','parkNorthRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','ParkNorthHotel','Pool, Gym',50 , 75 , 90 ,100,15),
-(4,'The Courtyard Suites','courtyardRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheCourtyardSuites','Pool, Gym, Spa, Business Office',100 , 150 , 250 ,20, 25),
-(5,'The Regency Rooms','regencyRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheRegencyRooms','Pool, Gym, Spa, Business Office',100 , 150 , 250 ,20,25),
-(6,'Town Inn Budget Rooms','townInnRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TownInnBudgetRooms','Pool',25 , 50 , 60 ,150, 15),
-(7,'The Comfy Motel Place','comfyMotelRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheComfyMotelPlace','n/a',30 , 50 , 0,50, 10),
-(8,'Sun Palace Inn','sunPalaceRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','SunPalaceInn','Pool, Gym',40 , 60 , 80 ,50, 25),
-(9,'HomeAway Inn','homeAwayRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','HomeAwayInn','Pool, Business Office',50 , 0 , 0 ,30, 25),
-(10,'Rio Inn','RioInnRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','rioInnRoom','Pool',25 , 55 , 89 ,50, 20);
+(1,'The Magnolia All Suites','MagnoliaRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheMagnoliaAllSuites','Pool, Gym, Spa, Business Office','Room Price per night: $100 - Standard, $150 - Queen, $250 – King',20,25),
+(2,'The Lofts at Town Centre','townCentreRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheLoftsatTownCentre','Pool, Gym, Business Office','Room Price per night: $105 - Standard, $120 - Queen, $190 – King',60, 35),
+(3,'Park North Hotel','parkNorthRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','ParkNorthHotel','Pool, Gym','Room Price per night: $50 - Standard, $75 - Queen, $90 – King',100,15),
+(4,'The Courtyard Suites','courtyardRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheCourtyardSuites','Pool, Gym, Spa, Business Office','Room Price per night: $100 - Standard, $150 - Queen, $250 – King',20, 25),
+(5,'The Regency Rooms','regencyRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheRegencyRooms','Pool, Gym, Spa, Business Office','Room Price per night: $100 - Standard, $150 - Queen, $250 – King',20,25),
+(6,'Town Inn Budget Rooms','townInnRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TownInnBudgetRooms','Pool','Room Price per night: $25 - Standard, $50 - Queen, $60 – King',150, 15),
+(7,'The Comfy Motel Place','comfyMotelRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','TheComfyMotelPlace','n/a','Room Price per night: $30 - Standard, $50 - Queen, n/a – King',50, 10),
+(8,'Sun Palace Inn','sunPalaceRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','SunPalaceInn','Pool, Gym','Room Price per night: $40 - Standard, $60 - Queen, $80 – King',50, 25),
+(9,'HomeAway Inn','homeAwayRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','HomeAwayInn','Pool, Business Office','Room Price per night: $50 - Standard, n/a - Queen, n/a – King',30, 25),
+(10,'Rio Inn','RioInnRoom','QUEEN SIZE','STANDARD SIZE','KING SIZE','rioInnRoom','Pool','Room Price per night: $25 - Standard, $55 - Queen, $89 – King',50, 20);
 
 
 

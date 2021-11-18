@@ -1,11 +1,11 @@
 <?php
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
-    $name=$_GET['name'];
+    $bookingID=$_GET['bookingID'];
     if(isset($_REQUEST[ 'submit'])) 
     { 
         extract($_REQUEST); 
-        $result=$user->cancelTownCentre($hotel_id, $room_size, $checkin, $checkout, $U_id ,$name, $phone, $price,$book);
+        $result=$user->cancelBooking($bookingID);
         if($result)
         {
             echo "<script type='text/javascript'>
@@ -46,7 +46,7 @@
         <nav class="navbar navbar-inverse">
             <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Home</a></li>
+                    <li class="active"><a href="../index.php">Home</a></li>
                     <li><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
                     <li><a href="../Manager.php">login/Registration</a></li>

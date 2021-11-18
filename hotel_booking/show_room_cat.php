@@ -23,7 +23,7 @@ $user=new User();
         .well {
             background: rgba(0, 0, 0, 0.7);
             border: none;
-            height: 300px;
+            height: 200px;
         }
         
         body {
@@ -61,36 +61,29 @@ $user=new User();
       <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
             
-  
-    <div class="container">
-       
-       <nav class="navbar navbar-inverse">
-           <div class="container-fluid">
-               <ul class="nav navbar-nav">
-                   <li><a href="index.php">Home</a></li>
-                   <li><a href="hotels.php">Hotels</a></li>
-                   <li><a href="contact.php">Contact</a></li>
-                   <li class="active"><a href="User.php">Login</a></li>
-                   <li><a href="userRegister.php">Customer Registration</a></li>
-                 </ul>
-                   <ul class="nav navbar-nav navbar-right">
+        <nav class="navbar navbar-inverse">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li><a href="index.php">Home</a></li>
+                    <li><a href="hotels.php">Hotels</a></li>
+                    <li><a href="contact.php">Contact Us</a></li>
+                    <li><a href="Manager.php">login/Registration</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a href="Manager.php?q=logout">
-                            <button class = "btn btn-primary" type="button">Sign Out</button>
+                        <a href="admin.php?q=logout">
+                            <button type="button" class="btn btn-danger">Logout</button>
                         </a>
                     </li>
                 </ul>
-               </ul>
-           </div>
-       </nav>
-       <hr>
-     
+            </div>
+        </nav>
         
         
         
         <?php
         
-        $sql="SELECT * FROM hotelList";
+        $sql="SELECT * FROM Hotel";
 
 
         $result = mysqli_query($user->db, $sql);
@@ -101,21 +94,31 @@ $user=new User();
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {
-                    
-                    
-                    echo "
+                        echo "
                             <div class='row'>
                             <div class='col-md-2'></div>
                             <div class='col-md-6 well'>
-                                <h4>".$row['hotels']."</h4><hr>
-                                <h6>Room capacity: ".$row['room_num']." </h6>
-                                <h6>Standard bed Price/night: ".$row['standard_price']." </h6>
-                                <h6>Queen bed Price/night: ".$row['queen_price']." </h6>
-                                <h6>King bed Price/night: ".$row['king_price']." </h6>
-                                <h6>Amenities: ".$row['hotelAmenities']."</h6>
-                            </div>
-                         
-                           
+                                <h4>".$row['name']."</h4><hr>
+                                <h6>Aminities: ".$row['amenities']."</h6>";
+
+                    $hotelID = $row['hotelID'];
+                    $sql2 = "SELECT * FROM Hotel_Rooms WHERE Hotel_Rooms.hotelID = '$hotelID'";
+                    $result2 = mysqli_query($user->db, $sql2);
+
+                    if($result2){
+                        if(mysqli_num_rows($result2) >0){
+                            while($row2 = mysqli_fetch_array($result2)){
+                            echo
+                                "<h6>".$row2['room_type'].": $".$row2['rate']." Capacity: ".$row2['total_num']." </h6>  ";
+                            }
+                        }else{
+                            echo "No Data Exists";
+                        } 
+                    }else{
+                        echo "Cannot connect to server".$result;
+                    }
+                            
+                        echo "   </div>
                             </div>                           
                          ";                                       
                 }

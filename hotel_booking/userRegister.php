@@ -4,7 +4,7 @@ $user=new User();
 if(isset($_REQUEST[ 'submit'])) 
 { 
     extract($_REQUEST); 
-    $register=$user->addUser($fullname, $uname, $upass, $uemail); 
+    $register=$user->addUser($fullname, $uname, $upass, $uemail, 'customer'); 
     if($register) 
     { 
         echo "
@@ -103,8 +103,9 @@ if(isset($_REQUEST[ 'submit']))
                     <li><a href="index.php">Home</a></li>
                     <li><a href="hotels.php">Hotels</a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Login</a></li>
-                    <li class="active"><a href="userRegister.php">Customer Registration</a></li>
+                    <li><a href="Manager.php">Manager Login</a></li>
+                    <li><a href="admin/UserLogin.php">User Login</a></li>
+                    <li class="active"><a href="userRegister.php">User Registration</a></li>
                 </ul>
             </div>
         </nav>
@@ -118,13 +119,13 @@ if(isset($_REQUEST[ 'submit']))
                    <input placeholder ="Enter First and Last Name (eg. John Smith)" type="text" class="form-control" name="fullname" pattern ="^[A-Za-z]+\s[A-Za-z]+$" required>
                </div>
                 <div class="form-group">        
-                    <input type="text" class="form-control" name="uname" placeholder="Enter User Name (at least 8 characters)" minlength="8" required>
+                    <input type="text" class="form-control" name="uname" placeholder="Enter User Name (ex. abc123)" pattern = "^[a-z]{3}[0-9]{3}$"required>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" name="uemail" placeholder="Enter your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="upass" placeholder="Pick your password (at least 8 characters)" minlength="8" required>
+                    <input type="text" class="form-control" name="upass" placeholder="Pick your password" required>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary button" name="submit" value="Add Manager" onclick="return(submitreg());">Submit</button>
 

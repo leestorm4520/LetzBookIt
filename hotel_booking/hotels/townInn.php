@@ -2,10 +2,11 @@
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
     $room_size=$_GET['room_size'];
+    $roomID = $_GET['roomID'];
     if(isset($_REQUEST[ 'submit'])) 
     { 
         extract($_REQUEST); 
-        $result=$user->book_townInn($checkin, $checkout, $name, $phone,$room_size);
+        $result=$user->makeBooking($checkin, $checkout, $name, $phone,$roomID);
         if($result)
         {
             echo "<script type='text/javascript'>
@@ -89,14 +90,14 @@ $( ".datepicker" ).datepicker({
     <div class="container">
        
         <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
+            <div class="container-fluid">
                 <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li class= "active"><a href="../hotels.php">Hotels</a></li>
+                <li><a href="../index.php">Home</a></li>
+                    <li class="active"><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
+                    <li><a href="../Manager.php">Manager login</a></li>
+                    <li><a href="../admin/UserLogin.php">User Login</a></li>
+                    <li><a href="../userRegister.php">User Registration</a></li>
                 </ul>
             </div>
         </nav>

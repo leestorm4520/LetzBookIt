@@ -1,11 +1,11 @@
 <?php
     include_once 'admin/include/class.user.php'; 
     $user=new User(); 
-    $bedType=$_GET['bedType'];
+    $hotels=$_GET['hotels'];
     if(isset($_REQUEST[ 'submit'])) 
     { 
         extract($_REQUEST); 
-        $result=$user->booknow($checkin, $checkout, $name, $phone,$bedType);
+        $result=$user->book_Magnolia($checkin, $checkout, $name, $phone,$hotels);
         if($result)
         {
             echo "<script type='text/javascript'>
@@ -101,7 +101,7 @@ $( ".datepicker" ).datepicker({
         <hr>
 
       <div class="well">
-            <h2>Make Reservation for "<?php echo $bedType; ?>"</h2>
+            <h2>Make Reservation for "<?php echo $hotels; ?>"</h2>
             
             <form action="" method="post" name="room_category">
               

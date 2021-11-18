@@ -78,14 +78,14 @@ $( ".datepicker" ).datepicker({
        
               
     <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
+            <div class="container-fluid">
                 <ul class="nav navbar-nav">
                     <li><a href="../index.php">Home</a></li>
-                    <li class= "active"><a href="../hotels.php">Hotels</a></li>
+                    <li class="active"><a href="../hotels.php">Hotels</a></li>
                     <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
+                    <li><a href="../Manager.php">Manager login</a></li>
+                    <li><a href="../admin/UserLogin.php">User Login</a></li>
+                    <li><a href="../userRegister.php">User Registration</a></li>
                 </ul>
             </div>
         </nav>
@@ -94,33 +94,42 @@ $( ".datepicker" ).datepicker({
         <?php
         
         
-        $sql="SELECT * FROM hotelList";
+        $sql="SELECT * FROM Hotel_Rooms
+              INNER JOIN Hotel ON Hotel.hotelID = Hotel_Rooms.hotelID 
+              WHERE Hotel.name = 'The Magnolia All Suites' ";
+              //This query will get all hotel room types associated with The Magnolia All Suites
         $result = mysqli_query($user->db, $sql);
         if($result)
         {
             if(mysqli_num_rows($result) > 0)
             {
+                echo "
+                        <div>
+                               <h2 style='color:white'> Welcome to The Magnolia All Suites</h2>   
+                            </div>
+                                <div class='form-group'>
+                                    <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;";
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
-                {
-                    if ($row['hotels'] == 'The Magnolia All Suites' )
-                      
-                    echo "
-                        <div>
-                               <h2 style='color:white'> Welcome to The Magnolia All Suites </h2>   
-                            </div>
-                            <div class='form-group'>
-                                <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;
-                             <a href='../hotels/TheMagnoliaAllSuites.php?room_size=".$row['room1']."'><button>QUEEN SIZE</button> </a>
-                             <a href='../hotels/TheMagnoliaAllSuites.php?room_size=".$row['room2']."'><button>STANDARD SIZE</button> </a>
-                             <a href='../hotels/TheMagnoliaAllSuites.php?room_size=".$row['room3']."'><button>KING SIZE</button> </a>
-                            </div>
-                        </div>
-                         "; //echo end                                      
+                {     
+                    //echo "
+                      //  <div>
+                        //       <h2 style='color:white'> Welcome to Town Inn Budget Rooms</h2>   
+                          //  </div>
+                            //<div class='form-group'>
+                            //    <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;
+                            echo" <a href='../hotels/townInn.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
+                            // <a href='../hotels/townInn.php?room_size=".$row['room2']."'><button>STANDARD SIZE</button> </a>
+                           //  <a href='../hotels/townInn.php?room_size=".$row['room3']."'><button>KING SIZE</button> </a>
+                          //  </div>
+                       // </div>
+                       //  "; //echo end                                      
                 
                 
                 
-                }                                      
+                }     
+                echo "</div>
+                    </div>";                                 
             }
             else
             {
