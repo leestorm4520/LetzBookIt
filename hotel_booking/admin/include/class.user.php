@@ -177,7 +177,7 @@
 
             public function checkUserlogin($emailusername,$password)
             {
-                $sql2="SELECT userID from User WHERE email='$emailusername' OR username='$emailusername' AND password='$password'";
+                $sql2="SELECT * from User WHERE email='$emailusername' OR username='$emailusername' AND password='$password'";
                 $result=mysqli_query($this->db,$sql2);
                 $user_data=mysqli_fetch_array($result);
                 $count_row=$result->num_rows;
@@ -186,6 +186,7 @@
                 {
                     $_SESSION['login']=true;
                     $_SESSION['userID']=$user_data['userID'];
+                    $_SESSION['userPerms']=$user_data['permissions'];
                     return true;    
                 }
                 else

@@ -1,7 +1,7 @@
 <?php session_start();
 include_once 'admin/include/class.user.php';
 $user=new User();
-$U_id=$_SESSION[ 'U_id']; 
+$U_id=$_SESSION[ 'userID']; 
 
 if(!$user->get_session()) 
 { 
@@ -75,24 +75,24 @@ if(isset($_GET['q']))
     </div>
 
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-flU_id">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Manager Login</a></li>
-                    <li class="active"><a href="User.php">User Login</a></li>
-                    <li><a href="userRegister.php">User Registration</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="User.php?q=logout">
-                            <button type="button">Logout</button>
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="index.php">Home</a></li>
+                   <li><a href="hotels.php">Hotels</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li class="active"><a href="Manager.php">Login</a></li>
+                   <li><a href="userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
+                     <li>
+                        <a href="Manager.php?q=logout">
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
                         </a>
                     </li>
-                </ul>
-            </div>
+          
+       </div>
         </nav>
         <?php
         

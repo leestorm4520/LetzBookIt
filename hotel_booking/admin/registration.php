@@ -97,19 +97,27 @@ if(isset($_REQUEST[ 'submit']))
       <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
-    <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li class = "active"><a href="../Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="../userRegister.php">User Registration</a></li>
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="../index.php">Home</a></li>
+                   <li><a href="../hotels.php">Hotels</a></li>
+                   <li><a href="../contact.php">Contact</a></li>
+                   <li class="active"><a href="registration.php">Login</a></li>
+                   <li><a href="../userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="../Manager.php?q=logout">
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
+                        </a>
+                    </li>
                 </ul>
-            </div>
-        </nav>
-        <hr>
+               </ul>
+           </div>
+       </nav>
+       <hr>
 
         <div class="well">
             <h2>Add Your Manager</h2>
@@ -119,13 +127,13 @@ if(isset($_REQUEST[ 'submit']))
                    <input placeholder ="Enter First and Last Name (eg. John Smith)" type="text" class="form-control" name="name" pattern ="^[A-Za-z]+\s[A-Za-z]+$" required>
                </div>
                 <div class="form-group">        
-                    <input type="text" class="form-control" name="uname" placeholder="Enter User Name (ex. abc123)" pattern = "^[a-z]{3}[0-9]{3}$"required>
+                    <input type="text" class="form-control" name="uname" placeholder="Enter User Name (At least 8 characters)" minlength="8" required>
                 </div>
                 <div class="form-group">
                     <input type="email" class="form-control" name="uemail" placeholder="Enter your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="upass" placeholder="Pick your password" required>
+                    <input type="password" class="form-control" name="upass" placeholder="Pick your password (At least 8 characters" minlength="8" required>
                 </div>
                 <button type="submit" class="btn btn-lg btn-primary button" name="submit" value="Add Manager" onclick="return(submitreg());">Submit</button>
 

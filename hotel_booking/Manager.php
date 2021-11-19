@@ -1,7 +1,7 @@
 <?php session_start();
 include_once 'admin/include/class.user.php';
 $user=new User();
-$M_id=$_SESSION[ 'M_id']; 
+$M_id=$_SESSION[ 'userID']; 
 if(!$user->get_session()) 
 { 
     header("location:admin/login.php"); 
@@ -73,27 +73,27 @@ if(isset($_GET['q']))
     </div>
 
     <div class="container">
-        <nav class="navbar navbar-inverse">
-            <div class="container-flM_id">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li class="active"><a href="Manager.php">Manager login</a></li>
-                    <li><a href="admin/UserLogin.php">User Login</a></li>
-                    <li><a href="userRegister.php">User Registration</a></li>
-                </ul>
-                <ul class="nav navbar-nav navbar-right">
+       
+       <nav class="navbar navbar-inverse">
+           <div class="container-fluid">
+               <ul class="nav navbar-nav">
+                   <li><a href="index.php">Home</a></li>
+                   <li><a href="hotels.php">Hotels</a></li>
+                   <li><a href="contact.php">Contact</a></li>
+                   <li class="active"><a href="Manager.php">Login</a></li>
+                   <li><a href="userRegister.php">Customer Registration</a></li>
+                 </ul>
+                   <ul class="nav navbar-nav navbar-right">
                     <li>
-
                         <a href="Manager.php?q=logout">
-                            <button type="button">Logout</button>
+                            <button class = "btn btn-primary" type="button">Sign Out</button>
                         </a>
-
                     </li>
                 </ul>
-            </div>
-        </nav>
+               </ul>
+           </div>
+       </nav>
+       <hr>
         <div class = "wellfix">
              <div class = "control" style="text-align: center; padding = 40px; margin: 30px;">
            
@@ -101,23 +101,21 @@ if(isset($_GET['q']))
                  <hr>
                   <div style="text-align: center; padding = 40px; margin: 30px;">
                 <ul>
-                    <a href="show_room_cat.php">Show All Room</a>
+                    <a href="show_room_cat.php">Room Availability</a>
                 </ul>
                 <ul>
-                    <a href="userProfile.php">Show all User Profiles</a>
+                    <a href="userProfile.php">Customer Information</a>
                 </ul>
                 <ul>
-                    <a href="hotels.php">Book Hotels</a>
+                    <a href="hotels.php">Booking</a>
                  </ul>
                 <ul>
-                    <a href="show_all_room.php">Show All Booked Rooms</a>
+                    <a href="show_all_room.php">Reservation Info and Cancellation</a>
                 </ul>
                 <ul>
                     <a href="admin/registration.php">Add Another Manager</a>
                 </ul>
-                <ul>
-                    <a href="show_all_room.php">cancel a booked room</a>
-                </ul>
+                
             </div>
             
         </div>
