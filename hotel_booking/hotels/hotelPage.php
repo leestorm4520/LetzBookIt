@@ -1,7 +1,7 @@
 <?php
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
-
+    $hotelName = $_GET['hotelName'];
 ?>
 
 <!DOCTYPE html>
@@ -96,8 +96,8 @@ $( ".datepicker" ).datepicker({
         
         $sql="SELECT * FROM Hotel_Rooms
               INNER JOIN Hotel ON Hotel.hotelID = Hotel_Rooms.hotelID 
-              WHERE Hotel.name = 'Sun Palace Inn' ";
-              //This query will get all hotel room types associated with the Sun Palace Inn
+              WHERE Hotel.name = '$hotelName' ";
+              //This query will get all hotel room types associated with the given hotel
         $result = mysqli_query($user->db, $sql);
         if($result)
         {
@@ -105,7 +105,7 @@ $( ".datepicker" ).datepicker({
             {
                 echo "
                         <div>
-                               <h2 style='color:white'> Welcome to Sun Palace Inn</h2>   
+                               <h2 style='color:white'> Welcome to ".$hotelName."</h2>   
                             </div>
                                 <div class='form-group'>
                                     <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;";

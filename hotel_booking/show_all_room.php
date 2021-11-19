@@ -120,7 +120,7 @@ if(isset($_GET['q']))
                                 <h6>Checkin: ".$row['start_dt']." and checkout: ".$row['end_dt']."</h6>
                                 <h6>Name: ".$row['name']."</h6>
                                 <h6>Phone: ".$row['phone_num']."</h6>
-                                <a href='hotelsCancelation/RoomCancelation.php?bookingID=".$row['bookingID']."'><button>Cancel </button> </a>
+                                <a href='hotels/RoomCancelation.php?bookingID=".$row['bookingID']."'><button>Cancel </button> </a>
                                 <hr>
 
                          ";
