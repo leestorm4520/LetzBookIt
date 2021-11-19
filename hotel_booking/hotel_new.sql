@@ -15,22 +15,20 @@ CREATE TABLE `Hotel` (
   `phone_num` varchar(32) NOT NULL,
   `weekend_diff` float NOT NULL,
   `amenities` set('spa','pool','gym','business_office') NOT NULL,
-  `pickRoomWeb` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
-  `websiteDirect` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`hotelID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
-INSERT INTO `Hotel` (`hotelID`, `name`, `address`, `phone_num`, `weekend_diff`, `amenities`, `pickRoomWeb`, `websiteDirect`) VALUES
-(4,	'The Magnolia All Suites',	'San Antonio',	'210-123-1234',	1.25,	'spa,pool,gym,business_office',	'MagnoliaRoom',	'TheMagnoliaAllSuites'),
-(5,	'The Lofts at Town Center',	'San Antonio',	'210-444-4343',	1.35,	'pool,gym,business_office',	'townCenterRoom',	'TheLoftsatTownCenter'),
-(6,	'Park North Hotel',	'San Antonio',	'210-890-9870',	1.15,	'pool,gym',	'parkNorthRoom',	'ParkNorthHotel'),
-(7,	'The Courtyard Suites',	'Houston',	'713-222-2232',	1.25,	'spa,pool,gym,business_office',	'courtyardRoom',	'TheCourtyardSuites'),
-(8,	'The Regency Rooms',	'Houston',	'713-567-8907',	1.25,	'spa,pool,gym,business_office',	'regencyRoom',	'TheRegencyRooms'),
-(9,	'Town Inn Budget Rooms',	'Austin',	'123-234-3456',	1.15,	'pool',	'townInnRoom',	'TownInnBudgetRooms'),
-(10,	'The Comfy Motel Place',	'San Antonio',	'210-543-5435',	1.1,	'',	'comfyMotelRoom',	'TheComfyMotelPlace'),
-(11,	'Sun Palace Inn',	'San Antonio',	'210-786-1234',	1.25,	'pool,gym',	'sunPalaceRoom',	'SunPalaceInn'),
-(12,	'HomeAway Inn',	'San Antonio',	'210-434-3434',	1.25,	'pool,business_office',	'homeAwayRoom',	'HomeAwayInn'),
-(13,	'Rio Inn',	'San Antonio',	'210-321-3210',	1.2,	'pool',	'RioInnRoom',	'rioInnRoom');
+INSERT INTO `Hotel` (`hotelID`, `name`, `address`, `phone_num`, `weekend_diff`, `amenities`) VALUES
+(4,	'The Magnolia All Suites',	'San Antonio',	'210-123-1234',	1.25,	'spa,pool,gym,business_office'),
+(5,	'The Lofts at Town Center',	'San Antonio',	'210-444-4343',	1.35,	'pool,gym,business_office'),
+(6,	'Park North Hotel',	'San Antonio',	'210-890-9870',	1.15,	'pool,gym'),
+(7,	'The Courtyard Suites',	'Houston',	'713-222-2232',	1.25,	'spa,pool,gym,business_office'),
+(8,	'The Regency Rooms',	'Houston',	'713-567-8907',	1.25,	'spa,pool,gym,business_office'),
+(9,	'Town Inn Budget Rooms',	'Austin',	'123-234-3456',	1.15,	'pool'),
+(10,	'The Comfy Motel Place',	'San Antonio',	'210-543-5435',	1.1,	''),
+(11,	'Sun Palace Inn',	'San Antonio',	'210-786-1234',	1.25,	'pool,gym'),
+(12,	'HomeAway Inn',	'San Antonio',	'210-434-3434',	1.25,	'pool,business_office'),
+(13,	'Rio Inn',	'San Antonio',	'210-321-3210',	1.2,	'pool');
 
 DROP TABLE IF EXISTS `Hotel_Rooms`;
 CREATE TABLE `Hotel_Rooms` (
