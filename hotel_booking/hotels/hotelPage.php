@@ -112,20 +112,7 @@ $( ".datepicker" ).datepicker({
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {     
-                    //echo "
-                      //  <div>
-                        //       <h2 style='color:white'> Welcome to Town Inn Budget Rooms</h2>   
-                          //  </div>
-                            //<div class='form-group'>
-                            //    <label style= 'font-size:20px; color:yellow' for='room_size'>Pick Your Bed Size:</label>&nbsp;
-                            echo" <a href='../hotels/townInn.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
-                            // <a href='../hotels/townInn.php?room_size=".$row['room2']."'><button>STANDARD SIZE</button> </a>
-                           //  <a href='../hotels/townInn.php?room_size=".$row['room3']."'><button>KING SIZE</button> </a>
-                          //  </div>
-                       // </div>
-                       //  "; //echo end                                      
-                
-                
+                            echo" <a href='../hotels/bookRoom.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
                 
                 }     
                 echo "</div>

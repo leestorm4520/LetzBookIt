@@ -18,13 +18,24 @@ $user=new User();
 
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link href="admin/css/room.css" rel="stylesheet">
-     
+    <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        $( function() {
+        $( ".datepicker" ).datepicker({
+              dateFormat : 'yy-mm-dd'
+            });
+        } );
+</script>
 </head>
 
 <body>
     <div class = "image">
       <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
+  
     <div class="container">
         
         <nav class="navbar navbar-inverse">
@@ -39,7 +50,59 @@ $user=new User();
             </div>
         </nav>
         <hr>
-        
+
+    <form>
+        <div class = "container">
+            <h4>Filter by...</h4>
+            <div class = "row">
+                <div class = "col-md-3">
+                    <h6>City</h6>
+                    <input class="form-control" type="text" placeholder="City" name = "address">
+                </div>
+                <div class ="col-md-2">
+                    <h6>Min Price</h6>
+                    <input class="form-control" type="text" pattern = "^\d{1,8}$" name="minPrice">
+                </div>
+                <div class ="col-md-2">
+                    <h6>Max Price</h6>
+                    <input class="form-control" type="text" pattern = "^\d{1,8}$" name="maxPrice">
+                </div>
+            
+                <div class ="col-md-2">
+                    <h6>Start Date</h6>
+                    <input class="datepicker" type="text" name="start_dt" style="width:165px;height:35px;"> 
+                </div>
+                <div class ="col-md-2">
+                    <h6>End Date</h6>
+                    <input class="datepicker" type="text" name="end_dt" style="width:165px;height:35px;">
+                </div>
+            </div>
+            <div class = "row justify-content-between">
+                <div class = "col-md-4">
+                    <h6>Amenities</h6>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="spaCheckbox" value="spa">
+                        <label class="form-check-label" for="spaCheckbox" style = "color:white;">Spa   </label>
+                    
+                        <input class="form-check-input" type="checkbox" id="poolCheckbox" value="pool">
+                        <label class="form-check-label" for="poolCheckbox" style = "color:white;">Pool  </label>
+                    
+                        <input class="form-check-input" type="checkbox" id="gymCheckbox" value="gym">
+                        <label class="form-check-label" for="gymCheckbox" style = "color:white;">Gym   </label>
+
+                        <input class="form-check-input" type="checkbox" id="businessCheckbox" value="business_office">
+                        <label class="form-check-label" for="businessCheckbox" style = "color:white;">Business Office</label>
+                    </div>
+                </div>
+                <div class = "col-md-5">
+                </div>
+                <div class = "col-md-3">
+                    <h6>&nbsp;</h6>
+                    <button type="submit" class="btn btn-lg btn-primary button" name="submit" style = "width:165px;">Search</button>
+                </div>
+            </div>
+        </div>
+    </form>
         <?php
         
         
