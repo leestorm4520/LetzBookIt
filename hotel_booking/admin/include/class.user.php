@@ -5,7 +5,7 @@
             public $db;
             public function __construct()
             {
-                $this->db=new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,'hotel');
+                $this->db=new mysqli(DB_SERVER,DB_USERNAME,DB_PASSWORD,'hotel_new');
                 if(mysqli_connect_errno())
                 {
                     echo "Error: Could not connect to database.";
