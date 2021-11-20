@@ -122,6 +122,29 @@
                     return $result;
 
             }
+
+
+            public function addHotel($name, $address, $phone, $weekend_dif, $favorite)
+            {
+                   
+                $sql="INSERT INTO Hotel SET name='$name', address='$address', phone_num='$phone', weekend_diff='$weekend_dif', amenities = '$favorite'";
+                $send=mysqli_query($this->db,$sql);
+                if($send)
+                {
+                    $result="Your Hotel has been added!!";
+                }
+                else
+                {
+                    $result="Sorry, Internel Error";
+                }
+
+                return $result;
+
+            }
+
+
+
+
             //legacy code
              public function edit_room_cat($bedType, $room_qnty, $no_bed, $bedtype,$facility,$price,$room_cat)
             {

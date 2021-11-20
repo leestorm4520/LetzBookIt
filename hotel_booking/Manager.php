@@ -104,6 +104,9 @@ if(isset($_GET['q']))
                     <a href="show_room_cat.php">Room Availability</a>
                 </ul>
                 <ul>
+                    <a href="addHotels.php">Add Hotels</a>
+                </ul>
+                <ul>
                     <a href="userProfile.php">Customer Information</a>
                 </ul>
                 <ul>
