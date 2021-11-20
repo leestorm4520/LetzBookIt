@@ -62,8 +62,8 @@
                 
                 
                    $sql="SELECT count(b.bookingID) from Booking b
-                         WHERE b.hrID = '$roomTypeID' AND b.start_dt < '$checkout' AND b.end_dt > '$checkin' ";
-                    $check= mysqli_query($this->db,$sql);  //or die(mysqli_connect_errno()."Query Doesnt run");;
+                         WHERE b.hrID = '$roomTypeID' AND b.start_dt <= '$checkout' AND b.end_dt >= '$checkin' ";
+                    $check= mysqli_query($this->db,$sql); 
                     $row = mysqli_fetch_array($check);
 
                     $sql2="SELECT * FROM Hotel_Rooms hr WHERE hr.hrID = '$roomTypeID'";
@@ -74,6 +74,42 @@
                         return true;
                     }
                     return false;
+            }
+
+            //this function will check all hotels for any available rooms
+            //the option arguments for rate are to ensure no false positives on searches when search by price range
+            //returns an array containing the hotelID's that do not have avaiable rooms with the given conditions 
+            public function check_all_available($checkin, $checkout, $minRate = 0, $maxRate = 1000000000){
+                    
+                    $retRay = array();
+                    $hasNoAvail = true;
+                    $sqlHotel = "SELECT * FROM Hotel";
+                    $hotelResult = mysqli_query($this->db, $sqlHotel);
+                    while($hotelRow = mysqli_fetch_array($hotelResult)){
+
+                        $hotelID = $hotelRow['hotelID'];
+                        $sqlhr = "SELECT * FROM Hotel_Rooms hr 
+                                  WHERE hr.hotelID = '$hotelID'
+                                  AND hr.rate > '$minRate' AND hr.rate < '$maxRate'";
+                        $hrResult = mysqli_query($this->db, $sqlhr);
+                        while($hrRow = mysqli_fetch_array($hrResult)){
+
+                            $hrID = $hrRow['hrID'];
+                            $sql="SELECT count(b.bookingID) from Booking b
+                                  WHERE b.hrID = '$hrID' AND b.start_dt <= '$checkout' AND b.end_dt >= '$checkin' ";
+                            $check= mysqli_query($this->db,$sql);  
+                            $row = mysqli_fetch_array($check);
+
+                            if($row['count(b.bookingID)'] < $hrRow['total_num']){
+                                $hasNoAvail = false;
+                            }
+                        }
+                        if($hasNoAvail){
+                            $retRay[] = $hotelRow['hotelID']; 
+                        }
+                        $hasNoAvail = true;
+                    }
+                    return $retRay;
             }
             
             
@@ -122,7 +158,6 @@
                     return $result;
 
             }
-
 
             public function addHotel($name, $address, $phone, $weekend_dif, $favorite)
             {

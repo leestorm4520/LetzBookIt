@@ -118,7 +118,6 @@ if(isset($_GET['q']))
                 <ul>
                     <a href="admin/registration.php">Add Another Manager</a>
                 </ul>
-                
             </div>
             
         </div>

@@ -3,36 +3,34 @@
     $user=new User(); 
  //   $room_size=$_GET['room_size'];
    // $roomID=$_GET['roomID'];
- $object = "";
+   $object = "";
    if(isset($_POST['submit'])){
 
-    if(!empty($_POST['amenities'])) {    
-        foreach($_POST['amenities'] as $value){
-            if ($object == ""){
-            $object = $object . $value;
-        }
-            else{
-            $object = $object . "," . $value;
+        if(!empty($_POST['amenities'])) {    
+            foreach($_POST['amenities'] as $value){
+                if ($object == ""){
+                $object = $object . $value;
             }
-            
+                else{
+                $object = $object . "," . $value;
+                }
+                
+            }
         }
-    }
 
-} 
-
+    } 
     if(isset($_REQUEST[ 'submit'])) 
-    {    
+    { 
         extract($_REQUEST); 
-        
         $result=$user->addHotel($name, $address, $phone, $weekend_dif, $object);
         if($result)
-        {   
+        {
             echo "<script type='text/javascript'>
                   alert('".$result."');
              </script>";
              echo "
              <script type='text/javascript'>
-                 window.location.href = 'Maneger.php';
+                 window.location.href = 'Manager.php';
              </script>"; 
         }
     }
@@ -62,8 +60,6 @@ $( ".datepicker" ).datepicker({
 </script>
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
 <style>
     
     body {
@@ -124,7 +120,6 @@ $( ".datepicker" ).datepicker({
             
             <form action="" method="post" name="room_category">
               
-             
                <div class="form-group">
                  
                    <input  placeholder ="Hotel Name"type="text" class="form-control" name="name"required>
@@ -163,5 +158,3 @@ $( ".datepicker" ).datepicker({
 </body>
 
 </html>
-
-
