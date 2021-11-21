@@ -5,13 +5,14 @@ $user=new User();
 if(isset($_REQUEST[ 'submit'])) 
 { 
     extract($_REQUEST); 
-    $register=$user->addUser($fullname, $uname, $upass, $uemail, 'customer'); 
+    $register=$user->addUser($fullname, $uname, $upass, $uemail, $phone, 'customer'); 
     if($register) 
     { 
         echo "
                 <script type='text/javascript'>
                     alert('Your User has been Added Successfully');
                 </script>"; 
+        $user->checkUserLogin($uname, $upass);
         echo "
                 <script type='text/javascript'>
                     window.location.href = 'index.php';
@@ -118,7 +119,7 @@ if(isset($_REQUEST[ 'submit']))
                     <input type="password" class="form-control" name="upass" placeholder="Enter your password (at least 8 characters)" minlength="8" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" class="form-control" name="upass" placeholder="Enter your phone number (XXX-XXX-XXXX)" required> 
+                    <input type="text" class="form-control" name="phone" placeholder="Enter your phone number (XXX-XXX-XXXX)" required> 
                 <button type="submit" class="btn btn-lg btn-primary button" name="submit"  onclick="return(submitreg());">Submit</button>
 
                <br>

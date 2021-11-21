@@ -96,7 +96,8 @@ if(isset($_GET['q']))
                                 <h4 style = 'font-size: 30px'>Welcome Back</h4>
                                 <h4>".$row['full_name']."</h4>
                                 <h4>Password: ******** </h4>
-                                <h4>email: ".$row['email']."</h4>
+                                <h4>Email: ".$row['email']."</h4>
+                                <h4>Phone Number: ".$row['phone_num']."</h4>
                                                           
                             </div>
 
@@ -138,7 +139,8 @@ if(isset($_GET['q']))
                              }
                              else
                              {
-                                 echo "NO Data Exist";
+                                 echo "<h4>It seems you have no reservations at the current time<h4>";
+                                 echo "<h4>Click \"search\" to start finding hotels to book<h4>";
                              }
                          }
                          else

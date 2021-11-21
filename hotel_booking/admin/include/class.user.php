@@ -30,29 +30,6 @@
                     return false;
                 }
             }
-
-            //legacy code?
-            public function add_room($bedType, $room_qnty, $no_bed, $bedtype,$facility,$price)
-            {
-                
-                    $available=$room_qnty;
-                    $booked=0;
-                    
-                    $sql="INSERT INTO room_category SET bedType='$bedType', available='$available', booked='$booked', room_qnty='$room_qnty', no_bed='$no_bed', bedtype='$bedtype', facility='$facility', price='$price'";
-                    $result= mysqli_query($this->db,$sql) or die(mysqli_connect_errno()."Data cannot inserted");
-                
-                
-                    for($i=0;$i<$room_qnty;$i++)
-                    {
-                        $sql2="INSERT INTO rooms SET room_cat='$bedType', book='false'";
-                        mysqli_query($this->db,$sql2);
-                        
-                    }
-                
-                    return $result;
-                
-
-            }
             
             //checks the availability of a room type.
             //A room type is available to be booked if the number of books for that specific room type associated to the given hotel has not reached the maximum 
@@ -139,26 +116,6 @@
                     return $result;
             }
 
-            //legacy code?
-             public function edit_all_room($checkin, $checkout, $name, $phone,$id)
-            {
-                                
-                        $sql2="UPDATE rooms  SET checkin='$checkin', checkout='$checkout', name='$name', phone='$phone', book='true' WHERE room_id=$id";
-                         $send=mysqli_query($this->db,$sql2);
-                        if($send)
-                        {
-                            $result="Your Room has been booked!!";
-                        }
-                        else
-                        {
-                            $result="Sorry, Internel Error";
-                        }
-                    
-                
-                    return $result;
-
-            }
-
             public function addHotel($name, $address, $phone, $weekend_dif, $favorite)
             {
                    
@@ -212,45 +169,6 @@
                 }
 
                 return $result;
-
-            }
-
-
-            //legacy code
-             public function edit_room_cat($bedType, $room_qnty, $no_bed, $bedtype,$facility,$price,$room_cat)
-            {
-                    
-                 
-                        $sql2="DELETE FROM rooms WHERE room_cat='$room_cat'";
-                        mysqli_query($this->db,$sql2);
-                 
-                 
-                        for($i=0;$i<$room_qnty;$i++)
-                        {
-                            $sql3="INSERT INTO rooms SET room_cat='$bedType', book='false'";
-                            mysqli_query($this->db,$sql3);
-
-                        }
-
-                 
-                        $available=$room_qnty;
-                        $booked=0;
-                 
-                        $sql="UPDATE room_category  SET bedType='$bedType', available='$available', booked='$booked', room_qnty='$room_qnty', no_bed='$no_bed', bedtype='$bedtype', facility='$facility', price='$price' WHERE bedType='$room_cat'";
-                         $send=mysqli_query($this->db,$sql);
-                        if($send)
-                        {
-                            $result="Updated Successfully!!";
-                        }
-                        else
-                        {
-                            $result="Sorry, Internel Error";
-                        }
-  
-                    
-                
-                    return $result;
-                
 
             }
           
