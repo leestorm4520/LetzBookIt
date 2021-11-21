@@ -2,6 +2,9 @@
     session_start();
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
+    if(!isset($_SESSION['userPerms']) || strcmp($_SESSION['userPerms'], 'manager') != 0){
+        header("location:../permissionError.php");
+    }   
     $hotelName=$_GET['hotelName'];
    // $roomID=$_GET['roomID'];
 
