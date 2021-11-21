@@ -112,7 +112,7 @@ if(isset($_GET['q']))
                                 
                                 <h4 style = 'font-size: 30px'>Welcome Back</h4>
                                 <h4>".$row['full_name']."</h4>
-                                <h4>Password: ".$row['password']."</h4>
+                                <h4>Password: ******** </h4>
                                 <h4>email: ".$row['email']."</h4>
                                                           
                             </div>

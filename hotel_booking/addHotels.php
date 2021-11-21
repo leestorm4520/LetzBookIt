@@ -116,7 +116,7 @@ $( ".datepicker" ).datepicker({
         </nav>
         <hr>
       <div class="well">
-            <h2>Add Hotels"</h2>
+            <h2>Add Hotels</h2>
             
             <form action="" method="post" name="room_category">
               
@@ -142,7 +142,7 @@ $( ".datepicker" ).datepicker({
             <input type="checkbox" name="amenities[]" value="gym"> Gym 
             <input type="checkbox" name="amenities[]" value="business_office"> Business Office
 
-                <button type="submit" class="btn btn-lg btn-primary button" name="submit">Book Now</button>
+                <button type="submit" class="btn btn-lg btn-primary button" name="submit">Create</button>
 
                <br>
                 <div id="click_here">
