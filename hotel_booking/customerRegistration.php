@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'admin/include/class.user.php'; 
 $user=new User(); 
 if(isset($_REQUEST[ 'submit'])) 
@@ -30,7 +31,7 @@ if(isset($_REQUEST[ 'submit']))
 <html lang="en">
 
 <head>
-    <title>LETS BOOK IT</title>
+    <title>LET'S BOOK IT</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -94,24 +95,14 @@ if(isset($_REQUEST[ 'submit']))
 
 <body>
 <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
-    <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Login</a></li>
-                    <li class="active"><a href="userRegister.php">Customer Registration</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar()?>
         <hr>
 
         <div class="well">
-            <h2>Add your Profile</h2>
+            <h2>Fill out your Profile</h2>
             <hr>
             <form action="" method="post" name="reg">
             <div class="form-group"> 
@@ -124,13 +115,15 @@ if(isset($_REQUEST[ 'submit']))
                     <input type="email" class="form-control" name="uemail" placeholder="Enter your Email" required>
                 </div>
                 <div class="form-group">
-                    <input type="password" class="form-control" name="upass" placeholder="Pick your password (at least 8 characters)" minlength="8" required>
+                    <input type="password" class="form-control" name="upass" placeholder="Enter your password (at least 8 characters)" minlength="8" required>
                 </div>
-                <button type="submit" class="btn btn-lg btn-primary button" name="submit" value="Add Manager" onclick="return(submitreg());">Submit</button>
+                <div class="form-group">
+                    <input type="text" class="form-control" name="upass" placeholder="Enter your phone number (XXX-XXX-XXXX)" required> 
+                <button type="submit" class="btn btn-lg btn-primary button" name="submit"  onclick="return(submitreg());">Submit</button>
 
                <br>
                 <div id="click_here">
-                    <a href="../Manager.php">Back to HOME</a>
+                    <a href="index.php">Back to HOME</a>
                 </div>
 
 

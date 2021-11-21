@@ -1,5 +1,5 @@
 <?php session_start();
-include_once 'include/class.user.php'; $user=new User(); ?>
+include_once 'admin/include/class.user.php'; $user=new User(); ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -8,7 +8,7 @@ include_once 'include/class.user.php'; $user=new User(); ?>
     <title>LETS BOOK IT</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="css/login.css" type="text/css">
 
     <script language="javascript" type="text/javascript">
@@ -65,23 +65,12 @@ p
 </style>
 <body>
 <div class = "image">
-      <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
 
     <div class="container">
        
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li class="active"><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar()?>
         <hr>
         <div class="jumbotron">
             <h2>Login</h2>
@@ -100,21 +89,21 @@ p
                 <button type="submit" name="submit" value="Login" onclick="retrun(submitlogin());" class="btn btn-lg btn-primary btn-block">Submit</button>
                 
                 <br>
-                <p style="font-size: 14px;"><a href="../index.php">Back To Home</a></p>
+                <p style="font-size: 14px;"><a href="index.php">Back To Home</a></p>
                 
                 <?php if(isset($_REQUEST[ 'submit'])) { extract($_REQUEST); $login=$user->checkUserLogin($emailusername, $password); 
                     if($login) { 
                         if(strcmp($_SESSION['userPerms'], 'manager') == 0){
                             echo "<script type='text/javascript'>
-                                alert('You have logged in as Manager Successfully!!');
+                                alert('You have logged in as a Manager Successfully!!');
                             </script>
-                                <script>location='../Manager.php'</script>"; 
+                                <script>location='managerMenu.php'</script>"; 
                         }
                         else{
                             echo" <script type='text/javascript'>
-                                alert('You have logged in as Customer Successfully!!');
+                                alert('You have logged in as a Customer Successfully!!');
                             </script>
-                            <script>location='../User.php'</script>";
+                            <script>location='customerMenu.php'</script>";
                         } 
                     }
                     else{?>

@@ -1,7 +1,11 @@
 <?php
-include_once 'admin/include/class.user.php'; 
-$user=new User();
+    session_start();
+    include_once '../admin/include/class.user.php'; 
+    $user=new User(); 
+
+     
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,11 +17,18 @@ $user=new User();
     <title>Hotel Booking</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     
     
+    <script>
+$( function() {
+$( ".datepicker" ).datepicker({
+              dateFormat : 'yy-mm-dd'
+            });
+} );
+</script>
     <style>
           
         .well {
@@ -57,31 +68,13 @@ $user=new User();
 <body>
       
     <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="../images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
             
   
     <div class="container">
        
-       <nav class="navbar navbar-inverse">
-           <div class="container-fluid">
-               <ul class="nav navbar-nav">
-                   <li><a href="index.php">Home</a></li>
-                   <li><a href="hotels.php">Hotels</a></li>
-                   <li><a href="contact.php">Contact</a></li>
-                   <li class="active"><a href="User.php">Login</a></li>
-                   <li><a href="userRegister.php">Customer Registration</a></li>
-                 </ul>
-                   <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="Manager.php?q=logout">
-                            <button class = "btn btn-primary" type="button">Sign Out</button>
-                        </a>
-                    </li>
-                </ul>
-               </ul>
-           </div>
-       </nav>
+       <?php $user->makeNavBar(true)?>
        <hr>
         
         
@@ -104,7 +97,7 @@ $user=new User();
                             <div class='col-md-2'></div>
                             <div class='col-md-6 well'>
                                 <h4>".$row['name']."</h4><hr>
-                                <h6>Aminities: ".$row['amenities']."</h6>";
+                                <h6>Amenities: ".$row['amenities']."</h6>";
 
                     $hotelID = $row['hotelID'];
                     $sql2 = "SELECT * FROM Hotel_Rooms WHERE Hotel_Rooms.hotelID = '$hotelID'";

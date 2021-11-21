@@ -1,4 +1,5 @@
 <?php
+session_start();
 include_once 'admin/include/class.user.php'; 
 $user=new User();
 ?>
@@ -11,13 +12,13 @@ $user=new User();
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <title>LET's BOOK IT</title>
+    <title>LET'S BOOK IT</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="./css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
-    <link href="admin/css/room.css" rel="stylesheet">
+    <link href="./admin/css/room.css" rel="stylesheet">
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
@@ -33,27 +34,17 @@ $user=new User();
 
 <body>
     <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
   
     <div class="container">
         
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php">Home</a></li>
-                    <li class="active"><a href="hotels.php"> Hotels </a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Login</a></li>
-                    <li><a href="userRegister.php">Customer Registration</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar() ?>
         <hr>
 
     <form>
         <div class = "container">
-            <h4>Filter by...</h4>
+            <h4>Filter by.</h4>
             <div class = "row">
                 <div class = "col-md-3">
                     <h6>City</h6>
@@ -199,7 +190,7 @@ $user=new User();
                           
                                 <h4>".$row['name']."</h4>
                                 <h6>Location: ".$row['address']."</h6>
-                                <h6>Aminities: ".$amenities."</h6>
+                                <h6>Amenities: ".$amenities."</h6>
                                 <h6>Phone Number: ".$row['phone_num']."</h6>
                                 <h6>Weekend Differential: ".$weekDiff." % nightly rate surcharge.</h6>
                                 <h6>- ";
@@ -208,7 +199,7 @@ $user=new User();
                     }
 
                                 echo "</h6>
-                                <a href='hotels/hotelPage.php?hotelName=".$row['name']."'><button>Book Now</button> </a>
+                                <a href='booking.php?hotelName=".$row['name']."'><button>Book Now</button> </a>
                                 <h1></h1>                           
                             </div>
 

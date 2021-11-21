@@ -1,7 +1,9 @@
 <?php
+    session_start();
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
     $bookingID=$_GET['bookingID'];
+    $hotelName=$_GET['hotelName'];
     if(isset($_REQUEST[ 'submit'])) 
     { 
         extract($_REQUEST); 
@@ -38,28 +40,17 @@
 </head>
 <body>
     <div class = "image">
-      <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="../images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
 
     <div class="container">
        
-        <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li class= "active" ><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar(true)?>
         <hr>
       
         <form action="" method="post" name="room_category">
             <div class="col-md-12 well" >
-              <h4 style="color: #ffbb2b" >Click Confirm if you want to cancel "Home Away Hotel"</h4><br>
+              <h4 style="color: #ffbb2b" >Click Confirm if you want to cancel "<?php echo $hotelName ?>"</h4><br>
               <button type="submit" class="btn btn-lg btn-primary button" name="submit">Confirm</button>
             </div>  
         </form>

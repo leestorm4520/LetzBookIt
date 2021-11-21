@@ -4,7 +4,7 @@ $user=new User();
 $M_id=$_SESSION[ 'userID']; 
 if(!$user->get_session()) 
 { 
-    header("location:admin/login.php"); 
+    header("location:login.php"); 
 } 
 if(isset($_GET['q'])) 
 { 
@@ -69,30 +69,12 @@ if(isset($_GET['q']))
 
 <body>
     <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
 
     <div class="container">
        
-       <nav class="navbar navbar-inverse">
-           <div class="container-fluid">
-               <ul class="nav navbar-nav">
-                   <li><a href="index.php">Home</a></li>
-                   <li><a href="hotels.php">Hotels</a></li>
-                   <li><a href="contact.php">Contact</a></li>
-                   <li class="active"><a href="Manager.php">Login</a></li>
-                   <li><a href="userRegister.php">Customer Registration</a></li>
-                 </ul>
-                   <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="Manager.php?q=logout">
-                            <button class = "btn btn-primary" type="button">Sign Out</button>
-                        </a>
-                    </li>
-                </ul>
-               </ul>
-           </div>
-       </nav>
+       <?php $user->makeNavBar()?>
        <hr>
         <div class = "wellfix">
              <div class = "control" style="text-align: center; padding = 40px; margin: 30px;">
@@ -101,22 +83,16 @@ if(isset($_GET['q']))
                  <hr>
                   <div style="text-align: center; padding = 40px; margin: 30px;">
                 <ul>
-                    <a href="show_room_cat.php">Room Availability</a>
+                    <a href="hotelManager/roomAvailability.php">Room Availability</a>
                 </ul>
                 <ul>
-                    <a href="addHotels.php">Add Hotels</a>
+                    <a href="hotelManager/addHotels.php">Add Hotels</a>
                 </ul>
                 <ul>
-                    <a href="userProfile.php">Customer Information</a>
+                    <a href="hotelManager/userProfile.php">Customer Information</a>
                 </ul>
                 <ul>
-                    <a href="hotels.php">Booking</a>
-                 </ul>
-                <ul>
-                    <a href="show_all_room.php">Reservation Info and Cancellation</a>
-                </ul>
-                <ul>
-                    <a href="admin/registration.php">Add Another Manager</a>
+                    <a href="hotelManager/reservationInformation.php">Reservation Info and Cancellation</a>
                 </ul>
             </div>
             

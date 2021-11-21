@@ -1,5 +1,6 @@
 <?php
-    include_once '../admin/include/class.user.php'; 
+    session_start();
+    include_once 'admin/include/class.user.php'; 
     $user=new User(); 
     $hotelName = $_GET['hotelName'];
 ?>
@@ -12,9 +13,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Let's BOOK IT</title>
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
-    <link href="../css/index.css" rel="stylesheet">
-    <link rel="stylesheet" href="../admin/css/index.css">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/index.css" rel="stylesheet">
+    <link rel="stylesheet" href="admin/css/index.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
@@ -71,24 +72,13 @@ $( ".datepicker" ).datepicker({
 </head>
 <body>
     <div class = "image">
-      <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
 
     <div class="container">
        
               
-    <nav class="navbar navbar-inverse">
-    <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li class= "active"><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar()?>
         <hr>
         
         <?php
@@ -112,7 +102,7 @@ $( ".datepicker" ).datepicker({
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {     
-                            echo" <a href='../hotels/bookRoom.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
+                            echo" <a href='checkout.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
                 
                 }     
                 echo "</div>

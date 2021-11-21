@@ -1,20 +1,10 @@
-<?php session_start();
-include_once 'admin/include/class.user.php';
-$user=new User();
-$M_id=$_SESSION[ 'userID']; 
-if(!$user->get_session()) 
-{ 
-    header("location:admin/login.php"); 
-} 
-if(isset($_GET['q'])) 
-{ 
-    $user->user_logout();
- header("location:index.php"); 
-} 
+<?php
+    session_start();
+    include_once '../admin/include/class.user.php'; 
+    $user=new User(); 
 
      
 ?>
-
 
 
 <!DOCTYPE html>
@@ -28,7 +18,7 @@ if(isset($_GET['q']))
     <title>Hotel Booking</title>
 
     <!-- Bootstrap -->
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
     <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
     
@@ -70,29 +60,11 @@ if(isset($_GET['q']))
 <body>
 
 <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="../images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
        
-       <nav class="navbar navbar-inverse">
-           <div class="container-fluid">
-               <ul class="nav navbar-nav">
-                   <li><a href="index.php">Home</a></li>
-                   <li><a href="hotels.php">Hotels</a></li>
-                   <li><a href="contact.php">Contact</a></li>
-                   <li class="active"><a href="show_all_room.php">Login</a></li>
-                   <li><a href="userRegister.php">Customer Registration</a></li>
-                 </ul>
-                   <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a href="Manager.php?q=logout">
-                            <button class = "btn btn-primary" type="button">Sign Out</button>
-                        </a>
-                    </li>
-                </ul>
-               </ul>
-           </div>
-       </nav>
+       <?php $user->makeNavBar(true)?>
        <hr>
         
         <h1 style ="font-size: 20px; color: red">--------------------------------------Customer Booking Information---------------------------------</h1>
@@ -124,7 +96,7 @@ if(isset($_GET['q']))
                                 <h6>Checkin: ".$row['start_dt']." and checkout: ".$row['end_dt']."</h6>
                                 <h6>Name: ".$row['name']."</h6>
                                 <h6>Phone: ".$row['phone_num']."</h6>
-                                <a href='hotels/RoomCancelation.php?bookingID=".$row['bookingID']."'><button>Cancel </button> </a>
+                                <a href='../hotelManager/reservationCancellation.php?bookingID=".$row['bookingID']."&hotelName=".$row2['name']."'><button>Cancel </button> </a>
                                 <hr>
 
                          ";

@@ -1,5 +1,6 @@
 <?php
-    include_once 'admin/include/class.user.php'; 
+    session_start();
+    include_once '../admin/include/class.user.php'; 
     $user=new User(); 
  //   $room_size=$_GET['room_size'];
    // $roomID=$_GET['roomID'];
@@ -30,7 +31,7 @@
              </script>";
              echo "
              <script type='text/javascript'>
-                 window.location.href = 'Manager.php';
+                 window.location.href = 'addHotelRoom.php?hotelName=".$name."';
              </script>"; 
         }
     }
@@ -45,7 +46,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LET's BOOK IT</title>
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -101,22 +102,15 @@ $( ".datepicker" ).datepicker({
 </head>
 <body>
     <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="../images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     
     <div class="container">
        
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-
-                    <li><a href="addHotels.php">Manager login</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar(true)?>
         <hr>
       <div class="well">
-            <h2>Add Hotels</h2>
+            <h2>Add A New Hotel</h2>
             
             <form action="" method="post" name="room_category">
               
@@ -146,7 +140,7 @@ $( ".datepicker" ).datepicker({
 
                <br>
                 <div id="click_here">
-                    <a href="Manager.php">Back to Home</a>
+                    <a href="../managerMenu.php">Back to Home</a>
                 </div>
 
 

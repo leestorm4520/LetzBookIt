@@ -14,14 +14,14 @@
             }
             
             //adds a user to the database with the given attributes.
-            public function addUser($name, $username, $password, $email, $perms)
+            public function addUser($name, $username, $password, $email, $phone, $perms)
             {
                
                 $sql="SELECT * FROM User WHERE username='$username' OR email='$email'";
                 $check= mysqli_query($this->db, $sql);
                 if(mysqli_num_rows($check) == 0)
                 {
-                    $sql2="INSERT INTO User SET username='$username', password='$password', full_name='$name', email='$email', permissions='$perms'";
+                    $sql2="INSERT INTO User SET username='$username', password='$password', full_name='$name', email='$email', phone_num='$phone', permissions='$perms'";
                     $result= mysqli_query($this->db,$sql2) or die(mysqli_connect_errno()."Data cannot inserted");
                     return $result;
                 }
@@ -177,7 +177,43 @@
 
             }
 
+            public function addHotelRoom($room_type, $rate, $total_num, $hotelName){
+                $sq2="SELECT * FROM Hotel WHERE Hotel.name = '$hotelName'";
+                $result=mysqli_query($this->db,$sq2);
+                if ($result){
+                    if(mysqli_num_rows($result) > 0){
 
+                        while($row = mysqli_fetch_array($result)){
+                            $ID  = $data['hotelID'];
+                            if ($ID )
+                            echo "<script type='text/javascript'>
+                                     alert('".$ID."');
+                                     </script>";
+
+                        }
+
+                    }
+
+
+                }
+                
+                $sql="INSERT INTO Hotel_Rooms SET hotelID = '$ID',room_type='$room_type', rate='$rate', total_num='$total_num'";
+                $send=mysqli_query($this->db,$sql);
+                if($send)
+                {
+                    $result="Your Hotel Rooms has been added!!";
+                }
+                else
+                {   echo "<script type='text/javascript'>
+                    alert('".$room_type."');
+               </script>";
+                    
+                    $result="Sorry, Internel Error";
+                }
+
+                return $result;
+
+            }
 
 
             //legacy code
@@ -260,7 +296,69 @@
             public function user_logout()
             {
                 $_SESSION['login']=false;
+                $_SESSION['userID']=NULL;
                 session_destroy();
+            }
+
+            //makes the navbar seen on every page using user information (or lack thereof) from the session
+            //the isOneFolderDeep parameter is used for files in subdirectories.
+            public function makeNavBar($isOneFolderDeep = false){
+                
+                echo "<nav class='navbar navbar-inverse'>
+                        <div class='container-fluid'>
+                            <ul class='nav navbar-nav'>";
+
+                //function called from a file in a sub-Directory            
+                if($isOneFolderDeep){ 
+                    echo "
+                            <li><a href='../index.php'>Home</a></li>
+                            <li><a href='../searching.php'>Search</a></li>
+                            <li><a href='../contact.php'>Contact</a></li>";
+                    if(isset($_SESSION['userID'])){
+                        echo "<li><a href='../customerMenu.php'>Profile</a></li>";
+                        if(strcmp($_SESSION['userPerms'],'manager') == 0){
+                            echo "<li><a href='../managerMenu.php'>Manage</a></li>";
+                        }
+                        echo "</ul>
+                            <ul class='nav navbar-nav navbar-right'>
+                                <li>
+                                    <a href='../customerMenu.php?q=logout'>
+                                        <button class = 'btn btn-primary' type='button'>Sign Out</button>
+                                    </a>
+                                </li>";
+                    }else{
+                            echo "<li><a href='../login.php'>Login</a></li>
+                                <li><a href='../customerRegistration.php'>Customer Registration</a></li>";
+                    }
+                }
+
+                //Function called from a file not withing a sub-Directory
+                else{ 
+                    echo "
+                                <li><a href='index.php'>Home</a></li>
+                                <li><a href='searching.php'>Search</a></li>
+                                <li><a href='contact.php'>Contact</a></li>";
+                    if(isset($_SESSION['userID'])){
+                        echo "<li><a href='customerMenu.php'>Profile</a></li>";
+                        if(strcmp($_SESSION['userPerms'],'manager') == 0){
+                            echo "<li><a href='managerMenu.php'>Manage</a></li>";
+                        }
+                        echo "</ul>
+                              <ul class='nav navbar-nav navbar-right'>
+                                <li>
+                                    <a href='customerMenu.php?q=logout'>
+                                        <button class = 'btn btn-primary' type='button'>Sign Out</button>
+                                    </a>
+                                </li>";
+                    }else{
+                               echo "<li><a href='login.php'>Login</a></li>
+                                <li><a href='customerRegistration.php'>Customer Registration</a></li>";
+                    }
+                      
+                }
+                echo  "</ul>
+                        </div>
+                    </nav>";
             }
 
             

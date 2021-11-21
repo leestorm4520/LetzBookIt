@@ -1,3 +1,9 @@
+<?php 
+    session_start();
+    include_once 'admin/include/class.user.php'; 
+    $user=new User(); //We could probably stop creating a new user on every page with $_SESSION, but code works for now
+ ?>   
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -13,21 +19,11 @@
 </head>
 <body>
     <div class = "image">
-      <img src="logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="./images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     <div class="container">
        
-        <nav class="navbar navbar-inverse">
-            <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li class="active"><a href="index.php">Home</a></li>
-                    <li><a href="hotels.php">Hotels</a></li>
-                    <li><a href="contact.php">Contact</a></li>
-                    <li><a href="Manager.php">Login</a></li>
-                    <li><a href="userRegister.php">Customer Registration</a></li>
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar()?>
         <hr>
         <div class="row" style="color: green">
             <div class="col-md-12 well" >
@@ -37,7 +33,7 @@
             </div>  
         </div>
         <div>
-      <img src="roomPics.jpg" alt="logo" style="width:100%;height:400px;">
+      <img src="./images/roomPics.jpg" alt="pic" style="width:100%;height:400px;">
     </div>
         
     </div>

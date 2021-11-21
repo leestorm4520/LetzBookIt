@@ -1,5 +1,6 @@
 <?php
-    include_once '../admin/include/class.user.php'; 
+    session_start();
+    include_once 'admin/include/class.user.php'; 
     $user=new User(); 
     $room_size=$_GET['room_size'];
     $roomID = $_GET['roomID'];
@@ -14,7 +15,7 @@
              </script>";
              echo "
              <script type='text/javascript'>
-                 window.location.href = '../index.php';
+                 window.location.href = 'index.php';
              </script>"; 
         }
     }
@@ -29,7 +30,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>LET's BOOK IT</title>
 
-    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <link rel="stylesheet" href="http://www.w3schools.com/lib/w3.css">
 <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
@@ -84,23 +85,12 @@ $( ".datepicker" ).datepicker({
 </head>
 <body>
     <div class = "image">
-      <img src="../logo.jpeg" alt="logo" style="width:100px;height:100px;">
+      <img src="images/logo.jpeg" alt="logo" style="width:100px;height:100px;">
     </div>
     
     <div class="container">
        
-        <nav class="navbar navbar-inverse">
-        <div class="container-fluid">
-                <ul class="nav navbar-nav">
-                    <li><a href="../index.php">Home</a></li>
-                    <li class= "active"><a href="../hotels.php">Hotels</a></li>
-                    <li><a href="../contact.php">Contact</a></li>
-                    <li><a href="../User.php">Login</a></li>
-                    <li><a href="../userRegister.php">Customer Registration</a></li>
-              
-                </ul>
-            </div>
-        </nav>
+        <?php $user->makeNavBar()?>
         <hr>
       <div class="well">
             <h2>Make Reservation for "<?php echo $room_size; ?>"</h2>
@@ -124,7 +114,7 @@ $( ".datepicker" ).datepicker({
                </div>
                <div class="form-group">
                  
-                   <input  placeholder ="Enter Phone Number (eg. 555-555-5555)"type="text" class="form-control" name="phone" pattern = "^\d{3}-\d{3}-\d{4}$" required>
+                   <input  placeholder ="Enter Your Phone Number (eg. 555-555-5555)" type="text" class="form-control" name="phone" pattern = "^\d{3}-\d{3}-\d{4}$" required>
                </div>
                  
                
@@ -132,7 +122,7 @@ $( ".datepicker" ).datepicker({
 
                <br>
                 <div id="click_here">
-                    <a href="../index.php">Back to Home</a>
+                    <a href="index.php">Back to Home</a>
                 </div>
 
 
