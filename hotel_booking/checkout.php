@@ -4,10 +4,31 @@
     $user=new User(); 
     $room_size=$_GET['room_size'];
     $roomID = $_GET['roomID'];
+    $hotelName = $_GET['hotelName'];
+    
+    if(isset($_SESSION['userID'])){
+        $userID = $_SESSION['userID'];
+        $sql = "SELECT * FROM User WHERE User.userID = '$userID'";
+        $result = mysqli_query($user->db, $sql);
+        $row = mysqli_fetch_array($result);
+        $name = $row['full_name'];
+        $email = $row['email'];
+        $phone = $row['phone_num'];
+    }
+    else{
+        $userID = NULL;
+        $name = "";
+        $phone = "";
+    }
+
     if(isset($_REQUEST[ 'submit'])) 
     { 
-        extract($_REQUEST); 
-        $result=$user->makeBooking($checkin, $checkout, $name, $phone,$roomID);
+        extract($_REQUEST);
+        if($userID){ 
+            $result=$user->makeBooking($checkin, $checkout, $name, $phone,$roomID, $userID, $email);
+        }else{
+            $result=$user->makeBooking($checkin, $checkout, $name, $phone,$roomID);
+        }
         if($result)
         {
             echo "<script type='text/javascript'>
@@ -19,6 +40,8 @@
              </script>"; 
         }
     }
+    
+    
 
 ?>
 <!DOCTYPE html>
@@ -94,13 +117,14 @@ $( ".datepicker" ).datepicker({
         <hr>
       <div class="well">
             <h2>Make Reservation for "<?php echo $room_size; ?>"</h2>
+            <h2>at: <?php echo $hotelName?></h2>
             
             <form action="" method="post" name="room_category">
               
               
                <div class="form-group">
                     <label for="checkin">Date In :</label>
-                    <input type="text" class="datepicker" name="checkin">
+                    <input type="text" class="datepicker" name="checkin" >
 
                 </div>
                
@@ -110,11 +134,11 @@ $( ".datepicker" ).datepicker({
                 </div>
                 <div class="form-group">
                    
-                   <input placeholder ="Enter First Last Name(eg. John Smith)" type="text" class="form-control" name="name" pattern ="^[A-Za-z]+\s[A-Za-z]+$" required>
+                   <input placeholder ="Enter First Last Name(eg. John Smith)" type="text" class="form-control" name="name" pattern ="^[A-Za-z]+\s[A-Za-z]+$" required value="<?php echo $name?>">
                </div>
                <div class="form-group">
                  
-                   <input  placeholder ="Enter Your Phone Number (eg. 555-555-5555)" type="text" class="form-control" name="phone" pattern = "^\d{3}-\d{3}-\d{4}$" required>
+                   <input  placeholder ="Enter Your Phone Number (eg. 555-555-5555)" type="text" class="form-control" name="phone" pattern = "^\d{3}-\d{3}-\d{4}$" required value="<?php echo $phone?>"> 
                </div>
                  
                

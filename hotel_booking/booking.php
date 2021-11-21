@@ -102,7 +102,7 @@ $( ".datepicker" ).datepicker({
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {     
-                            echo" <a href='checkout.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
+                            echo" <a href='checkout.php?room_size=".$row['room_type']."&roomID=".$row['hrID']."&hotelName=".$hotelName."'><button>".$row['room_type'].": $".$row['rate']."</button> </a>";
                 
                 }     
                 echo "</div>

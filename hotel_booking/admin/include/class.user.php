@@ -90,14 +90,18 @@
             }
             
             
-            public function makeBooking($checkin, $checkout, $name, $phone, $roomTypeID)
+            public function makeBooking($checkin, $checkout, $name, $phone, $roomTypeID, $userID = NULL, $email = "foobar")
             {
                 if($checkin > $checkout){
                     return "Error: Starting date is after end date.";
                 }
                     if($this->check_available($checkin, $checkout, $roomTypeID))
                     {   
-                        $sql="INSERT INTO Booking SET start_dt='$checkin', end_dt='$checkout', name='$name', phone_num='$phone', hrID = '$roomTypeID', email = 'foobar', party_size = -1";
+                        $sql="INSERT INTO Booking SET start_dt='$checkin', end_dt='$checkout', name='$name', phone_num='$phone', 
+                                hrID = '$roomTypeID', email = '$email', party_size = -1";
+                        if($userID != NULL){
+                            $sql .= ", userID = '$userID'";
+                        }
                         $send=mysqli_query($this->db,$sql);
                         if($send)
                         {
