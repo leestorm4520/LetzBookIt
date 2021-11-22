@@ -8,6 +8,16 @@
     $hotelName=$_GET['hotelName'];
    // $roomID=$_GET['roomID'];
 
+    $types = array();
+    $sql = "SELECT * FROM Hotel h 
+            INNER JOIN Hotel_Rooms hr ON hr.hotelID = h.hotelID
+            WHERE h.name = '$hotelName'";
+    $sqlresult = mysqli_query($user->db, $sql);
+    while($row = mysqli_fetch_array($sqlresult)){
+        $types[] = $row['room_type'];
+    }
+     
+
     if(isset($_REQUEST[ 'submit'])) 
     {    
         extract($_REQUEST); 
@@ -19,7 +29,7 @@
              </script>";
              echo "
              <script type='text/javascript'>
-                 window.location.href = '../managerMenu.php';
+                 window.location.href = 'roomAvailability.php';
              </script>"; 
         }
     }
@@ -108,9 +118,14 @@ $( ".datepicker" ).datepicker({
                <div class="form-group">
                 <select name="room_type" id="room-select">
                 <option value="">--Please choose bed type--</option>
-                <option value="standard">Standard</option>
-                <option value="queen">Queen</option>
-                <option value="king">King</option>           
+                <?php 
+                    if(!in_array("standard", $types))
+                        echo "<option value='standard'>Standard</option>";
+                    if(!in_array("queen", $types))
+                        echo "<option value='queen'>Queen</option>";
+                    if(!in_array("king", $types))
+                        echo "<option value='king'>King</option>";
+                ?>           
                 </select>
                </div>
 
@@ -125,7 +140,7 @@ $( ".datepicker" ).datepicker({
 
                <br>
                 <div id="click_here">
-                    <a href="../managerMenu.php">Back to Home</a>
+                    <a href="roomAvailability.php">Back to Home</a>
                 </div>
 
 

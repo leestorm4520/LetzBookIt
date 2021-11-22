@@ -21,7 +21,7 @@
              </script>";
              echo "
              <script type='text/javascript'>
-                 window.location.href = '../managerMenu.php';
+                 window.location.href = 'roomAvailability.php';
              </script>"; 
         }
     }

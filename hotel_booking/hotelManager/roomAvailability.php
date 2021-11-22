@@ -99,7 +99,11 @@ $( ".datepicker" ).datepicker({
                             <div class='row'>
                             <div class='col-md-2'></div>
                             <div class='col-md-6 well' style = 'height:375px;'>
-                                <h4>".$row['name']."</h4><hr>
+                                <h4>".$row['name']."
+                                <a href='editRoom.php?room_type='><button class='btn btn-info' >Modify</button> </a>
+                                <a href='addHotelRoom.php?hotelName=".$row['name']."'><button class='btn btn-info' >Add Rooms</button> </a>
+                                <a href='editRoom.php?room_type='><button class='btn btn-danger' >Delete</button> </a>
+                                </h4><hr>
                                 <h6>City:         ".$row['address']."</h6>
                                 <h6>Amenities:    ".$amenities."</h6>
                                 <h6>Phone Number: ".$row['phone_num']."</h6>
