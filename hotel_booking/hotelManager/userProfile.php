@@ -52,8 +52,9 @@
                             
                                     <h4>".$row['userID']."</h4>
                                     <h6>Full Name: ".$row['full_name']." </h6>
+                                    <h6>Username: ".$row['username']."</h6>
                                     <h6>Email: ".$row['email']."</h6>
-                                    <h6>Password: ".$row['password']." </h6>
+                                    <h6>Phone Number: ".$row['phone_num']." </h6>
                                 
                                 </div>
 

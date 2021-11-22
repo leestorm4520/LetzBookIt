@@ -102,7 +102,7 @@ if(isset($_GET['q']))
 
                          "; //echo end  
                     
-                         $sq2="SELECT h.name, hr.room_type, b.start_dt, b.end_dt FROM Booking b 
+                         $sq2="SELECT h.name, hr.room_type, b.start_dt, b.end_dt, b.bookingID FROM Booking b 
                                 INNER JOIN Hotel_Rooms hr on hr.hrID = b.hrID
                                 INNER JOIN Hotel h on h.hotelID = hr.hotelID
                                 WHERE b.userID = '$U_id' "; /*or b.phone_num='$phone";*/
@@ -121,12 +121,12 @@ if(isset($_GET['q']))
                                     
                                              <div style = 'text-align:center' class='col-md-4 wellfix'>
                                           
-                                             <h4 style = 'font-size: 30px'>Your Booking at '".$row1['name']." </h4>
+                                             <h4 style = 'font-size: 18px'>Your Booking at '".$row1['name']."' </h4>
                                                  
-                                                 <h4>Check in date:".$row1['start_dt']."</h4>
-                                                 <h4>Check out date:".$row1['end_dt']."</h4>
-                                                 <h4>Room Size:".$row1['room_type']."</h4>
-                                                 
+                                                 <h4 style = 'font-size: 18px'>Check in date:".$row1['start_dt']."</h4>
+                                                 <h4 style = 'font-size: 18px'>Check out date:".$row1['end_dt']."</h4>
+                                                 <h4 style = 'font-size: 18px'>Room Size:".$row1['room_type']."</h4>
+                                                 <a href='reservationUpdate.php?bookID=".$row1['bookingID']."'><button class='btn btn-lg btn-primary button'>Modify</button> </a>
 
                                              </div>
                                             

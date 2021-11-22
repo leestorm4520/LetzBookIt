@@ -31,6 +31,7 @@
                 }
             }
 
+            //updates the user with the given userID with potentially new infomation. Password is only updated if it is given.
             public function updateUser($name, $userID, $email, $phone, $password = NULL){
                 
                 $sql = "UPDATE User u 
@@ -161,17 +162,9 @@
                     if(mysqli_num_rows($result) > 0){
 
                         while($row = mysqli_fetch_array($result)){
-                            $ID  = $data['hotelID'];
-                            if ($ID )
-                            echo "<script type='text/javascript'>
-                                     alert('".$ID."');
-                                     </script>";
-
+                            $ID  = $row['hotelID'];
                         }
-
                     }
-
-
                 }
                 
                 $sql="INSERT INTO Hotel_Rooms SET hotelID = '$ID',room_type='$room_type', rate='$rate', total_num='$total_num'";
@@ -181,10 +174,7 @@
                     $result="Your Hotel Rooms has been added!!";
                 }
                 else
-                {   echo "<script type='text/javascript'>
-                    alert('".$room_type."');
-               </script>";
-                    
+                {   
                     $result="Sorry, Internel Error";
                 }
 
