@@ -220,7 +220,7 @@ $( ".datepicker" ).datepicker({
                 ?>
                </div>
                 <button type="submit" class="btn btn-lg btn-primary button" name="submit" style="width:165px;">Update Reservation</button>
-                <button  class="btn btn-lg btn-primary button" name="cancel" style="width:165px;">Cancel Reservation</button>
+                <button  class="btn btn-lg btn-danger button" name="cancel" style="width:165px;">Cancel Reservation</button>
                
                 
                <br>

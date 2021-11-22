@@ -226,15 +226,6 @@
                         }
                     }
                 }
-                echo "<script type='text/javascript'>
-                  alert('".$ID."');
-             </script>";
-             echo "<script type='text/javascript'>
-                  alert('".$new_rate."');
-             </script>";
-             echo "<script type='text/javascript'>
-                  alert('".$new_total_num."');
-             </script>";
       
                 $sql="UPDATE hotel_rooms SET rate='$new_rate', total_num='$new_total_num' WHERE hotelID = '$ID' and room_type ='$room_type'";
                 $send=mysqli_query($this->db,$sql);

@@ -94,12 +94,17 @@ $( ".datepicker" ).datepicker({
 //               ********************************************** Show Room Category***********************
                 while($row = mysqli_fetch_array($result))
                 {
+                    $amenities = strtr($row['amenities'], array("," => ", ")); //for formating purposes
                         echo "
                             <div class='row'>
                             <div class='col-md-2'></div>
-                            <div class='col-md-6 well'>
+                            <div class='col-md-6 well' style = 'height:375px;'>
                                 <h4>".$row['name']."</h4><hr>
-                                <h6>Amenities: ".$row['amenities']."</h6>";
+                                <h6>City:         ".$row['address']."</h6>
+                                <h6>Amenities:    ".$amenities."</h6>
+                                <h6>Phone Number: ".$row['phone_num']."</h6>
+                                <h6>Weekend Differential: ".$row['weekend_diff']."</h6>";
+                                
 
                     $hotelID = $row['hotelID'];
                     $sql2 = "SELECT * FROM Hotel_Rooms WHERE Hotel_Rooms.hotelID = '$hotelID'";
@@ -109,8 +114,8 @@ $( ".datepicker" ).datepicker({
                         if(mysqli_num_rows($result2) >0){
                             while($row2 = mysqli_fetch_array($result2)){
                             echo
-                                "<h6>".$row2['room_type'].": $".$row2['rate']." Capacity: ".$row2['total_num']." </h6>  ";
-                                echo" <a href='editRoom.php?room_type=".$row2['room_type']."&rate=".$row2['rate']."&total_num=".$row2['total_num']."&name=".$row['name']."'><button class='btn btn-info' >Edit</button> </a>";
+                                "<h6>".$row2['room_type'].": $".$row2['rate']." Capacity: ".$row2['total_num']." 
+                                <a href='editRoom.php?room_type=".$row2['room_type']."&rate=".$row2['rate']."&total_num=".$row2['total_num']."&name=".$row['name']."'><button class='btn btn-info' >Edit</button> </a></h6>";
                             }
                         }else{
                             echo "No Data Exists";
