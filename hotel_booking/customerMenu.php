@@ -93,12 +93,11 @@ if(isset($_GET['q']))
                     echo "
                             <div style = 'text-align:center' class='col-md-4 wellfix'>
                                 
-                                <h4 style = 'font-size: 30px'>Welcome Back</h4>
-                                <h4>".$row['full_name']."</h4>
+                                <h4 style = 'font-size: 25px'>Welcome Back ".$row['full_name']."</h4>
                                 <h4>Password: ******** </h4>
                                 <h4>Email: ".$row['email']."</h4>
                                 <h4>Phone Number: ".$row['phone_num']."</h4>
-                                                          
+                                <a href='customerUpdate.php'><button class='btn btn-lg btn-primary button'>Update Information </button> </a>                          
                             </div>
 
                          "; //echo end  
@@ -127,7 +126,8 @@ if(isset($_GET['q']))
                                                  <h4>Check in date:".$row1['start_dt']."</h4>
                                                  <h4>Check out date:".$row1['end_dt']."</h4>
                                                  <h4>Room Size:".$row1['room_type']."</h4>
-                                                
+                                                 
+
                                              </div>
                                             
                                           ";

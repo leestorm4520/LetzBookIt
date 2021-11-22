@@ -86,7 +86,7 @@ if(isset($_GET['q']))
                  <hr>
                   <div style="text-align: center; padding = 40px; margin: 30px;">
                 <ul>
-                    <a href="hotelManager/roomAvailability.php">Room Availability</a>
+                    <a href="hotelManager/roomAvailability.php">List Hotels</a>
                 </ul>
                 <ul>
                     <a href="hotelManager/addHotels.php">Add Hotels</a>

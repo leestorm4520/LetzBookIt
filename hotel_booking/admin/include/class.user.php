@@ -30,6 +30,22 @@
                     return false;
                 }
             }
+
+            public function updateUser($name, $userID, $email, $phone, $password = NULL){
+                
+                $sql = "UPDATE User u 
+                        SET u.full_name = '$name', u.email = '$email', u.phone_num = '$phone'";
+                if($password != NULL){
+                    $sql .= ", u.password = '$password'";
+                }
+                $sql .= " WHERE u.userID = '$userID'";
+                $result = mysqli_query($this->db, $sql);
+                if($result){
+                    return true;
+                }else{
+                    return false;
+                }
+            }
             
             //checks the availability of a room type.
             //A room type is available to be booked if the number of books for that specific room type associated to the given hotel has not reached the maximum 

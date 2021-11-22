@@ -120,6 +120,7 @@ if(isset($_REQUEST[ 'submit']))
                 </div>
                 <div class="form-group">
                     <input type="text" class="form-control" name="phone" placeholder="Enter your phone number (XXX-XXX-XXXX)" required> 
+                </div>
                 <button type="submit" class="btn btn-lg btn-primary button" name="submit"  onclick="return(submitreg());">Submit</button>
 
                <br>
