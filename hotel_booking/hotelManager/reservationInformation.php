@@ -98,7 +98,7 @@
                                 <h6>Checkin: ".$row['start_dt']." and checkout: ".$row['end_dt']."</h6>
                                 <h6>Name: ".$row['name']."</h6>
                                 <h6>Phone: ".$row['phone_num']."</h6>
-                                <a href='../hotelManager/reservationCancellation.php?bookingID=".$row['bookingID']."&hotelName=".$row2['name']."'><button>Cancel </button> </a>
+                                <a href='../reservationUpdate.php?bookID=".$row['bookingID']."&hotelName=".$row2['name']."&hotelID=".$hotelID."'><button>Cancel </button> </a>
                                 <hr>
 
                          ";

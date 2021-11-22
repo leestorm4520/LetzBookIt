@@ -102,7 +102,7 @@ if(isset($_GET['q']))
 
                          "; //echo end  
                     
-                         $sq2="SELECT h.name, hr.room_type, b.start_dt, b.end_dt, b.bookingID FROM Booking b 
+                         $sq2="SELECT h.name, hr.room_type, b.start_dt, b.end_dt, b.bookingID, h.hotelID FROM Booking b 
                                 INNER JOIN Hotel_Rooms hr on hr.hrID = b.hrID
                                 INNER JOIN Hotel h on h.hotelID = hr.hotelID
                                 WHERE b.userID = '$U_id' "; /*or b.phone_num='$phone";*/
@@ -126,7 +126,7 @@ if(isset($_GET['q']))
                                                  <h4 style = 'font-size: 18px'>Check in date:".$row1['start_dt']."</h4>
                                                  <h4 style = 'font-size: 18px'>Check out date:".$row1['end_dt']."</h4>
                                                  <h4 style = 'font-size: 18px'>Room Size:".$row1['room_type']."</h4>
-                                                 <a href='reservationUpdate.php?bookID=".$row1['bookingID']."'><button class='btn btn-lg btn-primary button'>Modify</button> </a>
+                                                 <a href='reservationUpdate.php?bookID=".$row1['bookingID']."&hotelID=".$row1['hotelID']."&hotelName=".$row1['name']."'><button class='btn btn-lg btn-primary button'>Modify</button> </a>
 
                                              </div>
                                             

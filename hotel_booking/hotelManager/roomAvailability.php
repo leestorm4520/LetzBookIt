@@ -110,6 +110,7 @@ $( ".datepicker" ).datepicker({
                             while($row2 = mysqli_fetch_array($result2)){
                             echo
                                 "<h6>".$row2['room_type'].": $".$row2['rate']." Capacity: ".$row2['total_num']." </h6>  ";
+                                echo" <a href='editRoom.php?room_type=".$row2['room_type']."&rate=".$row2['rate']."&total_num=".$row2['total_num']."&name=".$row['name']."'><button class='btn btn-info' >Edit</button> </a>";
                             }
                         }else{
                             echo "No Data Exists";
