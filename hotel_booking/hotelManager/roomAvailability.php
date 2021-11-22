@@ -102,7 +102,7 @@ $( ".datepicker" ).datepicker({
                                 <h4>".$row['name']."
                                 <a href='editRoom.php?room_type='><button class='btn btn-info' >Modify</button> </a>
                                 <a href='addHotelRoom.php?hotelName=".$row['name']."'><button class='btn btn-info' >Add Rooms</button> </a>
-                                <a href='editRoom.php?room_type='><button class='btn btn-danger' >Delete</button> </a>
+                                <a href='deleteHotel.php?hotelID=".$row['hotelID']."&hotelName=".$row['name']."'><button class='btn btn-danger' >Delete</button> </a>
                                 </h4><hr>
                                 <h6>City:         ".$row['address']."</h6>
                                 <h6>Amenities:    ".$amenities."</h6>

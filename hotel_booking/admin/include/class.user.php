@@ -187,6 +187,33 @@
 
             }
 
+            //deletes the hotel with the given hotelID
+            public function deleteHotel($hotelID){
+                $sqlGetHRID = "SELECT * FROM Hotel_Rooms hr WHERE hr.hotelID = '$hotelID'";
+                $resultGetHRID = mysqli_query($this->db, $sqlGetHRID);
+                while($rowHRID = mysqli_fetch_array($resultGetHRID)){
+                    $hrID = $rowHRID['hrID'];
+                    $sqlKillBookings = "DELETE FROM Booking WHERE Booking.hrID = '$hrID'";
+                    $resultKillBook = mysqli_query($this->db, $sqlKillBookings);
+                }
+                
+                $sqlrooms = "DELETE FROM Hotel_Rooms WHERE Hotel_Rooms.hotelID = '$hotelID'";
+                $resultKillRooms = mysqli_query($this->db, $sqlrooms);
+                
+                
+                $sql ="DELETE FROM Hotel WHERE Hotel.hotelID = '$hotelID'";
+                $result = mysqli_query($this->db, $sql);
+                if($result)
+                {
+                     $retVal="Hotel Successfully Deleted!!";
+                }
+               else
+                {
+                    $retVal="Sorry, Internel Error";
+                }
+                return $retVal;
+            }
+
             public function addHotelRoom($room_type, $rate, $total_num, $hotelName){
                 $sq2="SELECT * FROM Hotel WHERE Hotel.name = '$hotelName'";
                 $result=mysqli_query($this->db,$sq2);
