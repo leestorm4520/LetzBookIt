@@ -53,7 +53,7 @@
       
         <form action="" method="post" name="room_category">
             <div class="col-md-12 well" >
-              <h4 style="color: #ffbb2b" >Click Confirm if you want to cancel "<?php echo $hotelName ?>"</h4><br>
+              <h4 style="color: #ffbb2b" >Click Confirm if you want to cancel the reservation at"<?php echo $hotelName ?>"</h4><br>
               <button type="submit" class="btn btn-lg btn-primary button" name="submit">Confirm</button>
             </div>  
         </form>
