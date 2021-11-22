@@ -11,7 +11,6 @@
     if(isset($_REQUEST[ 'submit'])) 
     {    
         extract($_REQUEST); 
-
         $result=$user->addHotelRoom($room_type, $rate, $total_num, $hotelName);
         if($result)
         {   
