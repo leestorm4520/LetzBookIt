@@ -44,7 +44,7 @@ $user=new User();
 
     <form>
         <div class = "container">
-            <h4>Filter by.</h4>
+            <h4>Filter by...</h4>
             <div class = "row">
                 <div class = "col-md-3">
                     <h6>City</h6>
@@ -93,6 +93,7 @@ $user=new User();
                 </div>
             </div>
         </div>
+        <hr>
     </form>
         <?php
         

@@ -19,7 +19,7 @@ $userID = $_SESSION['userID'];
 $sql = "SELECT * FROM User WHERE User.userID = '$userID'";
 $result = mysqli_query($user->db, $sql);
 if($result){
-    while($row = mysqli_fetch_array($result)){
+    while($row = mysqli_fetch_array($result)){ //Why did I make this a loop???
         $name = $row['full_name'];
         $email = $row['email'];
         $phone = $row['phone_num'];

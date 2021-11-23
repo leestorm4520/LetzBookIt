@@ -77,7 +77,9 @@ if(isset($_GET['q']))
     <div class="container">
        
        
-        <?php $user->makeNavBar();
+        <?php $user->makeNavBar();?>
+        <hr>
+        <?php
         
         
         $sql="SELECT * FROM User WHERE User.userID = '$U_id'";

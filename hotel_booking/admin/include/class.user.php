@@ -187,6 +187,21 @@
 
             }
 
+            public function updateHotel($name, $address, $phone, $weekend_dif, $favorite, $hotelID){
+                $sql="UPDATE Hotel SET name='$name', address='$address', phone_num='$phone', weekend_diff='$weekend_dif', amenities = '$favorite' WHERE Hotel.hotelID = '$hotelID'";
+                $send=mysqli_query($this->db,$sql);
+                if($send)
+                {
+                    $result="Your Hotel has been Updated!!";
+                }
+                else
+                {
+                    $result="Sorry, Internel Error";
+                }
+
+                return $result;
+            }
+
             //deletes the hotel with the given hotelID
             public function deleteHotel($hotelID){
                 $sqlGetHRID = "SELECT * FROM Hotel_Rooms hr WHERE hr.hotelID = '$hotelID'";

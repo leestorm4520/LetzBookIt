@@ -2,10 +2,9 @@
     session_start();
     include_once '../admin/include/class.user.php'; 
     $user=new User(); 
-    if(!$user->get_session()) 
-    { 
-        header("location:login.php"); 
-    }    
+    if(!isset($_SESSION['userPerms']) || strcmp($_SESSION['userPerms'], 'manager') != 0){
+        header("location:../permissionError.php");
+    }      
     $bookingID=$_GET['hotelID'];
     $hotelName=$_GET['hotelName'];
 
